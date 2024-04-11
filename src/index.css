@@ -91,7 +91,7 @@ body {
   margin-left: 2em;
 }
 
-.char {
+.front-titles .char {
   transform: translateY(2em);
   opacity: 0;
 }
@@ -193,6 +193,12 @@ body {
   color: var(--cl-font);
   font-size: 7em;
   font-family: var(--font-italiana);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.title-projects .char{
+  transform: translateY(2em);
+  opacity: 0;
 }
 
 .title-projects::after {
@@ -257,7 +263,8 @@ body {
   }
 }
 
-/* Blog SECTION */
+/* BLOG SECTION */
+
 .container-blog {
   margin-top: 10rem;
   z-index: 1;
@@ -265,9 +272,10 @@ body {
   background-color: var(--cl-bc);
   position: relative;
   border-top-left-radius: 2em;
+  border-bottom-right-radius: 2em;
 }
 
-.container-blog:before {
+.container-blog::before {
   content:'';
   position:absolute;
   top: -10rem;
@@ -280,7 +288,7 @@ body {
   border-radius:0 2em 2em 0;
 }
 
-.container-blog:after {
+.container-blog::after {
   content:'';
   position:absolute;
   top: -10rem;
@@ -297,7 +305,14 @@ body {
   color: var(--cl-font);
   font-size: 7em;
   font-family: var(--font-italiana);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
+
+.title-blog .char{
+  transform: translateY(2em);
+  opacity: 0;
+}
+
 
 .container-blog .content-blog {
   margin: 3rem;
@@ -316,3 +331,51 @@ body {
 }
 
 /* FOOT SECTION */
+
+.container-foot {
+  margin-top: 10rem;
+  z-index: 1;
+  height: 70vh;
+  background-color: var(--cl-bc);
+  position: relative;
+  border-top-right-radius: 2em;
+}
+
+
+.container-foot::before {
+  content:'';
+  position:absolute;
+  top: -10rem;
+  left: 10vw;
+  height:10em;
+  width:10em;
+  box-shadow: 
+    -30px 0 0 0 var(--cl-bc),
+    inset 0px -0px 0px -0px;
+  border-radius:2em 0 0 2em;
+}
+
+.container-foot::after {
+  content:'';
+  position:absolute;
+  top: -10rem;
+  left: 0;
+  height:10em;
+  width: 10vw;
+  background-color: var(--cl-bc);
+}
+
+.container-foot .title-foot {
+  position:absolute;
+  top: -9.5rem;
+  left: 11vw;
+  color: var(--cl-font);
+  font-size: 7em;
+  font-family: var(--font-italiana);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.title-foot .char{
+  transform: translateY(2em);
+  opacity: 0;
+}

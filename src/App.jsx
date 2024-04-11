@@ -1,18 +1,34 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from 'split-type';
 
 
 function App() {
     gsap.registerPlugin(useGSAP);
+    gsap.registerPlugin(ScrollTrigger);
 
     useGSAP(() => {
+        new SplitType(".title-1");
+        new SplitType(".title-2");
+        new SplitType(".title-3");
+        new SplitType(".title-projects");
+        new SplitType(".title-blog");
+        new SplitType(".title-foot");
+
         gsap.to(".words", { opacity: 1, delay: 1.5 });
-        let split_1 = new SplitType(".title-1");
-        let split_2 = new SplitType(".title-2");
-        let split_3 = new SplitType(".title-3");
-        gsap.to('.char', { y: 0, opacity: 1, stagger: 0.05, duration: 1 });
+        gsap.to('.front-titles .char', { y: 0, opacity: 1, stagger: 0.05, duration: 1 });
+        gsap.to('.container-projects .title-projects .char', { 
+            scrollTrigger: { trigger: '.container-projects .title-projects', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none'}, 
+            y: 0, opacity: 1, stagger: 0.05, duration: 0.5 });
+        gsap.to('.container-blog .title-blog .char', { 
+            scrollTrigger: { trigger: '.container-blog .title-blog', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none'}, 
+            y: 0, opacity: 1, stagger: 0.05, duration: 0.5 });
+        gsap.to('.container-foot .title-foot .char', { 
+            scrollTrigger: { trigger: '.container-foot .title-foot', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none'}, 
+            y: 0, opacity: 1, stagger: 0.01, duration: 0.5 });
+
     }, [])
 
     return (
@@ -83,6 +99,17 @@ function App() {
                         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
                         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
                         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </div>
+                </div>
+                <div className="container-foot">
+                    <div className="title-foot">
+                        Do you have some question or a project to share?
+                    </div>
+                    <div className="social-contact">
+
+                    </div>
+                    <div className="work-contact">
+
                     </div>
                 </div>
             </div>
