@@ -4,7 +4,6 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from 'split-type';
 
-
 function App() {
     gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger);
@@ -23,11 +22,18 @@ function App() {
             scrollTrigger: { trigger: '.container-projects .title-projects', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none'}, 
             y: 0, opacity: 1, stagger: 0.05, duration: 0.5 });
         gsap.to('.container-blog .title-blog .char', { 
-            scrollTrigger: { trigger: '.container-blog .title-blog', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none'}, 
+            scrollTrigger: { trigger: '.container-blog .title-blog', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none'}, 
             y: 0, opacity: 1, stagger: 0.05, duration: 0.5 });
         gsap.to('.container-foot .title-foot .char', { 
-            scrollTrigger: { trigger: '.container-foot .title-foot', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none'}, 
+            scrollTrigger: { trigger: '.container-foot .title-foot', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none'}, 
             y: 0, opacity: 1, stagger: 0.01, duration: 0.5 });
+
+        gsap.utils.toArray('.container-projects .project img').forEach(img => {
+            gsap.to(img, { 
+            scrollTrigger: { trigger: img, start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none'}, 
+            x: 0, duration: 1.5 
+            });
+        });
 
     }, [])
 
@@ -70,7 +76,7 @@ function App() {
                     <div className="list-projects">
                         <div className="project project-1">
                             <div className="container-img">
-                                <img src="src/assets/proj_1.png" alt="Project 1" />
+                                <img src="proj_1.png" alt="Project 1" />
                             </div>
                             <div className="project-info">
                                 <div className="project-name">Project 1</div>
@@ -80,7 +86,7 @@ function App() {
 
                         <div className="project project-2">
                             <div className="container-img">
-                                <img src="src/assets/proj_1.png" alt="Project 1" />
+                                <img src="proj_1.png" alt="Project 1" />
                             </div>
                             <div className="project-info">
                                 <div className="project-name">Project 1</div>

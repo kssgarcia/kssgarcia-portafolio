@@ -218,23 +218,44 @@ body {
   margin-top: 5rem;
 }
 
-.container-projects .project {
+.container-projects .list-projects > div:nth-child(odd) {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   color: var(--cl-font);
   margin: 0 20em;
 }
 
+.container-projects .list-projects > div:nth-child(odd) .project-info {
+  align-self: start;
+}
+
+.container-projects .list-projects > div:nth-child(odd) .project-name{
+  text-align: start;
+}
+
+.container-projects .list-projects > div:nth-child(even) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  color: var(--cl-font);
+  margin: 0 20em;
+}
+
+
 .container-projects .project .container-img {
+  width: 70%;
   background-color: var(--cl-bc-img);
   border-radius: 1em;
   padding: 1em;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 .container-projects .project img {
   width: 100%;
   border-radius: 1em;
+  transform: translatex(100vw);
 }
 
 .container-projects .project-info {
