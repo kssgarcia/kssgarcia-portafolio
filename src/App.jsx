@@ -15,6 +15,8 @@ function App() {
         new SplitType(".title-projects");
         new SplitType(".title-blog");
         new SplitType(".title-foot");
+        new SplitType(".container-projects .list-projects .project-name");
+        new SplitType(".container-projects .list-projects .project-description");
 
         gsap.to(".words", { opacity: 1, delay: 1.5 });
         gsap.to('.front-titles .char', { y: 0, opacity: 1, stagger: 0.05, duration: 1 });
@@ -27,11 +29,10 @@ function App() {
         gsap.to('.container-foot .title-foot .char', { 
             scrollTrigger: { trigger: '.container-foot .title-foot', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none'}, 
             y: 0, opacity: 1, stagger: 0.01, duration: 0.5 });
-
-        gsap.utils.toArray('.container-projects .project img').forEach(img => {
-            gsap.to(img, { 
-            scrollTrigger: { trigger: img, start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none'}, 
-            x: 0, duration: 1.5 
+        gsap.utils.toArray('.container-projects .list-projects .project .project-info').forEach(text => {
+            gsap.to(text.querySelectorAll('.char'), { 
+            scrollTrigger: { trigger: text, start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none'}, 
+            opacity: 1, stagger: 0.01, duration: 0.5
             });
         });
 

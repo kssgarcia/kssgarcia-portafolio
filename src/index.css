@@ -244,7 +244,6 @@ body {
   margin: 0 20em;
 }
 
-
 .container-projects .project .container-img {
   width: 70%;
   background-color: var(--cl-bc-img);
@@ -255,7 +254,6 @@ body {
 .container-projects .project img {
   width: 100%;
   border-radius: 1em;
-  transform: translatex(100vw);
 }
 
 .container-projects .project-info {
@@ -268,9 +266,17 @@ body {
   text-align: end;
 }
 
+.container-projects .list-projects .project-name .char {
+  opacity: 0;
+}
+
 .container-projects .list-projects .project-description {
   font-size: 1em;
   color: var(--cl-font-description);
+}
+
+.container-projects .list-projects .project-description .char {
+  opacity: 0;
 }
 
 @media screen and (max-width: 1000px) {
