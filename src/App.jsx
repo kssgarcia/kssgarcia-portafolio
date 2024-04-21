@@ -12,36 +12,43 @@ function App() {
         new SplitType(".title-1");
         new SplitType(".title-2");
         new SplitType(".title-3");
-        new SplitType(".title-projects");
-        new SplitType(".title-blog");
-        new SplitType(".title-foot");
-        new SplitType(".container-projects .list-projects .project-name");
-        new SplitType(".container-projects .list-projects .project-description");
 
         gsap.to(".words", { opacity: 1, delay: 1.5 });
         gsap.to('.front-titles .char', { y: 0, opacity: 1, stagger: 0.05, duration: 1 });
-        gsap.to('.container-projects .title-projects .char', { 
-            scrollTrigger: { trigger: '.container-projects .title-projects', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none'}, 
-            y: 0, opacity: 1, stagger: 0.05, duration: 0.5 });
-        gsap.to('.container-blog .title-blog .char', { 
-            scrollTrigger: { trigger: '.container-blog .title-blog', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none'}, 
-            y: 0, opacity: 1, stagger: 0.05, duration: 0.5 });
-        gsap.to('.container-foot .title-foot .char', { 
-            scrollTrigger: { trigger: '.container-foot .title-foot', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none'}, 
-            y: 0, opacity: 1, stagger: 0.01, duration: 0.5 });
-        gsap.utils.toArray('.container-projects .list-projects .project .project-info').forEach(text => {
-            gsap.to(text.querySelectorAll('.char'), { 
-            scrollTrigger: { trigger: text, start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none'}, 
-            opacity: 1, stagger: 0.01, duration: 0.5
+
+        if (!window.matchMedia("only screen and (max-width: 760px)").matches) {
+            new SplitType(".title-projects");
+            new SplitType(".title-blog");
+            new SplitType(".title-foot");
+            new SplitType(".container-projects .list-projects .project-name");
+            new SplitType(".container-projects .list-projects .project-description");
+
+            gsap.to('.container-projects .title-projects .char', {
+                scrollTrigger: { trigger: '.container-projects .title-projects', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none' },
+                y: 0, opacity: 1, stagger: 0.05, duration: 0.5
             });
-        });
+            gsap.to('.container-blog .title-blog .char', {
+                scrollTrigger: { trigger: '.container-blog .title-blog', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
+                y: 0, opacity: 1, stagger: 0.05, duration: 0.5
+            });
+            gsap.to('.container-foot .title-foot .char', {
+                scrollTrigger: { trigger: '.container-foot .title-foot', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
+                y: 0, opacity: 1, stagger: 0.01, duration: 0.5
+            });
+            gsap.utils.toArray('.container-projects .list-projects .project .project-info').forEach(text => {
+                gsap.to(text.querySelectorAll('.char'), {
+                    scrollTrigger: { trigger: text, start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
+                    opacity: 1, stagger: 0.01, duration: 0.5
+                });
+            });
 
-        let ScrollContainer = document.querySelector('.container-projects .list-projects');
-        let Btn = document.querySelector('.title-projects');
+            let ScrollContainer = document.querySelector('.container-projects .list-projects');
+            let Btn = document.querySelector('.title-projects');
 
-        Btn.addEventListener('click', () => {
-            gsap.to(ScrollContainer, { scrollLeft: '+=500', duration: 1.0, ease: "power2.out" });
-        });
+            Btn.addEventListener('click', () => {
+                gsap.to(ScrollContainer, { scrollLeft: '+=500', duration: 1.0, ease: "power2.out" });
+            });
+        }
 
     }, [])
 
@@ -49,15 +56,15 @@ function App() {
         <div>
             <div id="container">
                 <div className="front">
-                        <div className="front-titles title-1">
-                            PORTAFOLIO
-                        </div>
-                        <div className="front-titles title-2">
-                            MECHANICAL
-                        </div>
-                        <div className="front-titles title-3">
-                            ENGINEER
-                        </div>
+                    <div className="front-titles title-1">
+                        PORTAFOLIO
+                    </div>
+                    <div className="front-titles title-2">
+                        MECHANICAL
+                    </div>
+                    <div className="front-titles title-3">
+                        ENGINEER
+                    </div>
 
                     <div className="left-words words">
                         <div className="word-1">KEVIN</div>
