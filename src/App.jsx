@@ -34,14 +34,12 @@ function App() {
             }
         });
 
-        if (!window.matchMedia("only screen and (max-width: 760px)").matches) {
-            loop.next({ duration: 0.4, ease: "power1.inOut" })
-        }
+        loop.next({ duration: 0.0, ease: "none" })
 
-        boxes.forEach((box, i) => box.addEventListener("click", () => loop.toIndex(i, { duration: 0.8, ease: "power1.inOut" })));
+        boxes.forEach((box, i) => box.addEventListener("click", () => loop.toIndex(i, { duration: 1.0, ease: "back.inOut" })));
 
-        document.querySelector(".next").addEventListener("click", () => loop.next({ duration: 0.4, ease: "power1.inOut" }));
-        document.querySelector(".prev").addEventListener("click", () => loop.previous({ duration: 0.4, ease: "power1.inOut" }));
+        document.querySelector(".next").addEventListener("click", () => loop.next({ duration: 1.0, ease: "back.inOut" }));
+        document.querySelector(".prev").addEventListener("click", () => loop.previous({ duration: 1.0, ease: "back.inOut" }));
 
         function horizontalLoop(items, config) {
             let timeline;
@@ -178,10 +176,9 @@ function App() {
                 if (config.draggable && typeof (Draggable) === "function") {
                     proxy = document.createElement("div")
                     let wrap = gsap.utils.wrap(0, 1),
-                        ratio, startProgress, draggable, dragSnap, lastSnap, initChangeX, wasPlaying,
+                        ratio, startProgress, draggable, lastSnap, initChangeX, wasPlaying,
                         align = () => tl.progress(wrap(startProgress + (draggable.startX - draggable.x) * ratio)),
                         syncIndex = () => tl.closestIndex(true);
-                    typeof (InertiaPlugin) === "undefined" && console.warn("InertiaPlugin required for momentum-based scrolling and snapping. https://greensock.com/club");
                     draggable = Draggable.create(proxy, {
                         trigger: items[0].parentNode,
                         type: "x",
@@ -194,33 +191,22 @@ function App() {
                             refresh();
                             ratio = 1 / totalWidth;
                             initChangeX = (startProgress / -ratio) - x;
-                            gsap.set(proxy, { x: startProgress / -ratio });
                         },
                         onDrag: align,
                         onThrowUpdate: align,
-                        overshootTolerance: 0,
-                        inertia: true,
-                        snap(value) {
-                            //note: if the user presses and releases in the middle of a throw, due to the sudden correction of proxy.x in the onPressInit(), the velocity could be very large, throwing off the snap. So sense that condition and adjust for it. We also need to set overshootTolerance to 0 to prevent the inertia from causing it to shoot past and come back
-                            if (Math.abs(startProgress / -ratio - this.x) < 10) {
-                                return lastSnap + initChangeX
-                            }
-                            let time = -(value * ratio) * tl.duration(),
-                                wrappedTime = timeWrap(time),
-                                snapTime = times[getClosest(times, wrappedTime, tl.duration())],
-                                dif = snapTime - wrappedTime;
-                            Math.abs(dif) > tl.duration() / 2 && (dif += dif < 0 ? tl.duration() : -tl.duration());
-                            lastSnap = (time + dif) / tl.duration() / -ratio;
-                            return lastSnap;
-                        },
                         onRelease() {
                             syncIndex();
                             draggable.isThrowing && (indexIsDirty = true);
+                            console.log(draggable.getDirection("start"));
+                            console.log(draggable.getDirection("end"));
+                            console.log(draggable.getDirection("velocity"));
+                            console.log(boxes);
+                            if (draggable.getDirection("start") === "left") {
+                                loop.next({ duration: 0.7, ease: "back.out" })
+                            } else if (draggable.getDirection("start") === "right") {
+                                loop.previous({ duration: 0.7, ease: "back.out" })
+                            }
                         },
-                        onThrowComplete: () => {
-                            syncIndex();
-                            wasPlaying && tl.play();
-                        }
                     })[0];
                     tl.draggable = draggable;
                 }
