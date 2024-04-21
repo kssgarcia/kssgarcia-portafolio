@@ -77,9 +77,33 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.open-chat {
+.scroll-down {
   color: var(--cl-font);
   z-index: 4;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  padding-bottom: 2px;
+}
+
+@keyframes moveX {
+  0% {
+    transform: translateX(-5em);
+  }
+  100% {
+    transform: translateX(3em);
+  }
+}
+
+.scroll-down::before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background-color: var(--cl-font);
+  animation: moveX 2s ease-in-out infinite;
 }
 
 .title-1 {
@@ -245,6 +269,7 @@ body {
   width: 100%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
+
 .container-projects .project img {
   width: 100%;
   height: 100%;
@@ -254,9 +279,11 @@ body {
   cursor: pointer;
 }
 
-.container-projects .project img:hover {
-  transform: scale(1.01);
-  filter: blur(0px);
+@media screen and (min-width: 1000px) {
+  .container-projects .project img:hover {
+    transform: scale(1.01);
+    filter: blur(0px);
+  }
 }
 
 .container-projects .project-info {
@@ -290,6 +317,10 @@ body {
   
   .list-projects .project {
     width: 90vw;
+  }
+
+  .container-projects .project img {
+    filter: blur(0px);
   }
 }
 

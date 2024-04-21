@@ -80,7 +80,7 @@ function App() {
                         <div className="word-2">/*THE BEST 2024*/</div>
                         <div className="word-3">--MACHINE LEARNING--</div>
                     </div>
-                    <div className="open-chat">
+                    <div className="scroll-down">
                         <div>Scroll</div>
                     </div>
                 </div>
