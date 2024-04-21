@@ -319,8 +319,21 @@ body {
     width: 90vw;
   }
 
+  .container-projects .list-projects {
+    margin: 0.3rem 5vw 0 5vw;
+    grid-auto-columns: 100%;
+  }
+
   .container-projects .project img {
     filter: blur(0px);
+  }
+
+  .container-projects .project-info {
+    font-size: 1em;
+  }
+
+  .container-projects .list-projects .project-name {
+    font-size: 1.5em;
   }
 }
 

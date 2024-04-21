@@ -104,7 +104,7 @@ function App() {
                                 <img src="proj_1.png" alt="Project 2" />
                             </div>
                             <div className="project-info">
-                                <div className="project-name">Project 1</div>
+                                <div className="project-name">Project 2</div>
                                 <div className="project-description">This is the bestr ptoject that has been done in many time</div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ function App() {
                                 <img src="proj_1.png" alt="Project 3" />
                             </div>
                             <div className="project-info">
-                                <div className="project-name">Project 1</div>
+                                <div className="project-name">Project 3</div>
                                 <div className="project-description">This is the bestr ptoject that has been done in many time</div>
                             </div>
                         </div>
