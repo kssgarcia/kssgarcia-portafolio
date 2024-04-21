@@ -452,10 +452,11 @@ body {
 .container-title {
   position:absolute;
   top: -9.5rem;
-  left: 11vw;
+  left: 10vw;
   width: 90vw;
   height: 8em;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  overflow-x: hidden;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: max-content;
@@ -510,6 +511,7 @@ body {
   }
 
   .container-foot .container-title {
+    font-size: 3.5rem;
     top: -4.5rem;
     left: 5vw;
   }
