@@ -16,10 +16,14 @@ function App() {
         gsap.to(".words", { opacity: 1, delay: 1.5 });
         gsap.to('.front-titles .char', { y: 0, opacity: 1, stagger: 0.05, duration: 1 });
 
+
+        let scrollText = document.querySelector('.container-foot .title-foot');
+        const duplicateText =  scrollText.cloneNode(true);
+        console.log(duplicateText)
+
         if (!window.matchMedia("only screen and (max-width: 760px)").matches) {
             new SplitType(".title-projects");
             new SplitType(".title-blog");
-            new SplitType(".title-foot");
             new SplitType(".container-projects .list-projects .project-name");
             new SplitType(".container-projects .list-projects .project-description");
 
@@ -30,10 +34,6 @@ function App() {
             gsap.to('.container-blog .title-blog .char', {
                 scrollTrigger: { trigger: '.container-blog .title-blog', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
                 y: 0, opacity: 1, stagger: 0.05, duration: 0.5
-            });
-            gsap.to('.container-foot .title-foot .char', {
-                scrollTrigger: { trigger: '.container-foot .title-foot', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
-                y: 0, opacity: 1, stagger: 0.01, duration: 0.5
             });
             gsap.utils.toArray('.container-projects .list-projects .project .project-info').forEach(text => {
                 gsap.to(text.querySelectorAll('.char'), {
@@ -133,8 +133,9 @@ function App() {
                     </div>
                 </div>
                 <div className="container-foot">
-                    <div className="title-foot">
-                        Do you have some question or a project to share?
+                    <div className="container-title">
+                        <div className="title-foot">Do you have some question or a project to share?</div>
+                        <div className="title-foot">Do you have some question or a project to share?</div>
                     </div>
                     <div className="social-contact">
 

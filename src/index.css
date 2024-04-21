@@ -449,14 +449,44 @@ body {
   background-color: var(--cl-bc);
 }
 
-.container-foot .title-foot {
+.container-title {
   position:absolute;
   top: -9.5rem;
   left: 11vw;
+  width: 90vw;
+  height: 8em;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      white 2.5%,
+      white 95%,
+      transparent
+  );
+  mask: linear-gradient(
+      90deg,
+      transparent,
+      white 2.5%,
+      white 95%,
+      transparent
+  );
+}
+
+.container-foot .title-foot {
+  width: max-content;
   color: var(--cl-font);
   font-size: 7em;
   font-family: var(--font-italiana);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  animation: moveText 20s linear infinite;
+}
+
+@keyframes moveText {
+  to {
+    transform: translate(-100%);
+  }
 }
 
 .title-foot .char{
@@ -477,6 +507,11 @@ body {
     height: 5rem;
     left: 0;
     top: -5rem;
+  }
+
+  .container-foot .container-title {
+    top: -4.5rem;
+    left: 5vw;
   }
 
   .container-foot .title-foot {
