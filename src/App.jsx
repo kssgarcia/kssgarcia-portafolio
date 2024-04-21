@@ -36,6 +36,13 @@ function App() {
             });
         });
 
+        let ScrollContainer = document.querySelector('.container-projects .list-projects');
+        let Btn = document.querySelector('.title-projects');
+
+        Btn.addEventListener('click', () => {
+            gsap.to(ScrollContainer, { scrollLeft: '+=500', duration: 1.0, ease: "power2.out" });
+        });
+
     }, [])
 
     return (
@@ -87,7 +94,17 @@ function App() {
 
                         <div className="project project-2">
                             <div className="container-img">
-                                <img src="proj_1.png" alt="Project 1" />
+                                <img src="proj_1.png" alt="Project 2" />
+                            </div>
+                            <div className="project-info">
+                                <div className="project-name">Project 1</div>
+                                <div className="project-description">This is the bestr ptoject that has been done in many time</div>
+                            </div>
+                        </div>
+
+                        <div className="project project-3">
+                            <div className="container-img">
+                                <img src="proj_1.png" alt="Project 3" />
                             </div>
                             <div className="project-info">
                                 <div className="project-name">Project 1</div>
