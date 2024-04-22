@@ -271,7 +271,7 @@ function App() {
 
             gsap.utils.toArray('.container-blog li').forEach(text => {
                 gsap.to(text.querySelectorAll('.char'), {
-                    scrollTrigger: { trigger: text, start: 'center bottom', end: 'center bottom', toggleActions: 'restart none reverse none', markers: true},
+                    scrollTrigger: { trigger: text, start: 'center bottom', end: 'center bottom', toggleActions: 'restart none reverse none'},
                     opacity: 1, stagger: 0.01, duration: 0.5
                 });
             });
