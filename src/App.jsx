@@ -34,12 +34,13 @@ function App() {
             }
         });
 
-        loop.next({ duration: 0.0, ease: "none" })
 
-        boxes.forEach((box, i) => box.addEventListener("click", () => loop.toIndex(i, { duration: 1.0, ease: "back.inOut" })));
+        boxes.forEach((box, i) => box.addEventListener("click", () => loop.toIndex(i, { duration: 0.7, ease: "back.out" })));
 
-        document.querySelector(".next").addEventListener("click", () => loop.next({ duration: 1.0, ease: "back.inOut" }));
-        document.querySelector(".prev").addEventListener("click", () => loop.previous({ duration: 1.0, ease: "back.inOut" }));
+        loop.toIndex(0, { duration: 0.0, ease: "back.out" });
+
+        document.querySelector(".next").addEventListener("click", () => loop.next({ duration: 0.7, ease: "back.out" }));
+        document.querySelector(".prev").addEventListener("click", () => loop.previous({ duration: 0.7, ease: "back.out" }));
 
         function horizontalLoop(items, config) {
             let timeline;
@@ -316,8 +317,10 @@ function App() {
                             </div>
                         </div>
                     </div>
-                    <button class="prev">prev</button>
-                    <button class="next">next</button>
+                    <div className="button-projects">
+                        <button class="prev"></button>
+                        <button class="next"></button>
+                    </div>
                 </div>
 
                 <div className="container-blog">
