@@ -251,6 +251,7 @@ function App() {
             new SplitType(".title-blog");
             new SplitType(".container-projects .list-projects .project-name");
             new SplitType(".container-projects .list-projects .project-description");
+            new SplitType(".container-blog a");
 
             gsap.to('.container-projects .title-projects .char', {
                 scrollTrigger: { trigger: '.container-projects .title-projects', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none' },
@@ -260,6 +261,7 @@ function App() {
                 scrollTrigger: { trigger: '.container-blog .title-blog', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
                 y: 0, opacity: 1, stagger: 0.05, duration: 0.5
             });
+
             gsap.utils.toArray('.container-projects .list-projects .project .project-info').forEach(text => {
                 gsap.to(text.querySelectorAll('.char'), {
                     scrollTrigger: { trigger: text, start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
@@ -267,11 +269,13 @@ function App() {
                 });
             });
 
-            let ScrollContainer = document.querySelector('.container-projects .list-projects');
-            let Btn = document.querySelector('.title-projects');
-            Btn.addEventListener('click', () => {
-                gsap.to(ScrollContainer, { scrollLeft: '+=500', duration: 1.0, ease: "power2.out" });
+            gsap.utils.toArray('.container-blog a').forEach(text => {
+                gsap.to(text.querySelectorAll('.char'), {
+                    scrollTrigger: { trigger: text, start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
+                    opacity: 1, stagger: 0.01, duration: 0.5
+                });
             });
+
         }
 
     }, [])

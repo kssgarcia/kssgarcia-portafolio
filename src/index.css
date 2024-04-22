@@ -542,6 +542,10 @@ body {
   width: 80%;
 }
 
+.container-blog a .char {
+  opacity: 0;
+}
+
 .container-blog p {
   font-size: 1rem;
   font-family: var(--font-inria);
