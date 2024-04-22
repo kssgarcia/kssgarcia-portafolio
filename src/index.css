@@ -476,7 +476,7 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.title-blog .char{
+.title-blog .char {
   transform: translateY(2em);
   opacity: 0;
 }
@@ -528,8 +528,6 @@ body {
   .container-blog li:hover::before {
     transform: scaleY(1);
   }
-
-
 }
 
 .container-blog a {
@@ -542,7 +540,7 @@ body {
   width: 80%;
 }
 
-.container-blog a {
+.container-blog a .char {
   opacity: 0;
 }
 
