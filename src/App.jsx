@@ -251,7 +251,7 @@ function App() {
             new SplitType(".title-blog");
             new SplitType(".container-projects .list-projects .project-name");
             new SplitType(".container-projects .list-projects .project-description");
-            new SplitType(".container-blog a");
+            new SplitType(".container-blog .content-blog ul a");
 
             gsap.to('.container-projects .title-projects .char', {
                 scrollTrigger: { trigger: '.container-projects .title-projects', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none' },
@@ -269,7 +269,7 @@ function App() {
                 });
             });
 
-            gsap.utils.toArray('.container-blog li').forEach(text => {
+            gsap.utils.toArray('.container-blog .content-blog ul a').forEach(text => {
                 gsap.to(text.querySelectorAll('.char'), {
                     scrollTrigger: { trigger: text, start: 'center bottom', end: 'center bottom', toggleActions: 'restart none reverse none'},
                     opacity: 1, stagger: 0.01, duration: 0.5
