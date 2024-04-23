@@ -375,12 +375,25 @@ function App() {
                         <div className="title-foot">Do you have some question or a project to share?</div>
                         <div className="title-foot">Do you have some question or a project to share?</div>
                     </div>
-                    <div className="social-contact">
-
+                    <div className="content-foot">
+                        <div className="social-contact">
+                            <div className="social-title">Socials</div>
+                            <div className="socials">
+                                <a href="" className="gihub">Github</a>
+                                <a href="" className="instagram">Instagram</a>
+                            </div>
+                        </div>
+                        <div className="work-contact">
+                            <div className="work-title">Email me!</div>
+                            <div className="email">kssgarcia@outlook.com</div>
+                        </div>
                     </div>
-                    <div className="work-contact">
-
+                    <div className="bottom-words">
+                        <div className="word-1">"FEM"</div>
+                        <div className="word-2">/*THE BEST 2024*/</div>
+                        <div className="word-3">--MACHINE LEARNING--</div>
                     </div>
+                    <div className="line"></div>
                 </div>
             </div>
         </div >
