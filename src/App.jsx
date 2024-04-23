@@ -38,15 +38,15 @@ function App() {
     }, []);
 
     useEffect(() => {
-        new SplitType('.container-blog li a');
-
-        gsap.utils.toArray('.container-blog li a').forEach(text => {
-            gsap.to(text.querySelectorAll('.char'), {
-                scrollTrigger: { trigger: text, start: 'center bottom', end: 'center bottom', toggleActions: 'restart none reverse none' },
-                opacity: 1, stagger: 0.01, duration: 0.5
+        if (!window.matchMedia("only screen and (max-width: 1000px)").matches) {
+            new SplitType('.container-blog li a');
+            gsap.utils.toArray('.container-blog li a').forEach(text => {
+                gsap.to(text.querySelectorAll('.char'), {
+                    scrollTrigger: { trigger: text, start: 'center bottom', end: 'center bottom', toggleActions: 'restart none reverse none' },
+                    opacity: 1, stagger: 0.01, duration: 0.5
+                });
             });
-        });
-        
+        }
     }, [posts]); 
 
     useGSAP(() => {
@@ -258,7 +258,7 @@ function App() {
             return timeline;
         }
 
-        if (!window.matchMedia("only screen and (max-width: 760px)").matches) {
+        if (!window.matchMedia("only screen and (max-width: 1000px)").matches) {
             new SplitType(".title-projects");
             new SplitType(".title-blog");
             new SplitType(".container-projects .list-projects .project-name");
@@ -272,6 +272,15 @@ function App() {
                 scrollTrigger: { trigger: '.container-blog .title-blog', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
                 y: 0, opacity: 1, stagger: 0.05, duration: 0.5
             });
+            gsap.to('.container-foot .social-contact', {
+                scrollTrigger: { trigger: '.container-foot .container-title', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
+                opacity: 1, duration: 2.0
+            });
+
+            gsap.to('.container-foot .work-contact', {
+                scrollTrigger: { trigger: '.container-foot .container-title', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
+                opacity: 1, duration: 2.0
+            });
 
             gsap.utils.toArray('.container-projects .list-projects .project .project-info').forEach(text => {
                 gsap.to(text.querySelectorAll('.char'), {
@@ -279,6 +288,7 @@ function App() {
                     opacity: 1, stagger: 0.01, duration: 0.5
                 });
             });
+
         }
     }, [])
 

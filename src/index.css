@@ -591,7 +591,7 @@ body {
 .container-foot {
   margin-top: 10rem;
   z-index: 1;
-  height: 70vh;
+  height: 60vh;
   background-color: var(--cl-bc);
   position: relative;
   border-top-right-radius: 2em;
@@ -669,7 +669,7 @@ body {
 }
 
 .content-foot {
-  height: 50vh;
+  height: 40vh;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 50%;
@@ -678,6 +678,7 @@ body {
 
 .content-foot .social-contact {
   align-self: end;
+  opacity: 0;
 }
 
 .content-foot .social-title {
@@ -699,6 +700,7 @@ body {
 
 .content-foot .work-contact {
   justify-self: end;
+  opacity: 0;
 }
 
 .content-foot .work-title {
@@ -762,5 +764,28 @@ body {
     top: -4.5rem;
     left: 5vw;
   }
-  
+
+  .content-foot .social-contact {
+    opacity: 1;
+  }
+
+  .content-foot .social-title  {
+    font-size: 2.5rem;
+  }
+
+  .content-foot .email {
+    font-size: 0.8rem;
+  }
+
+  .content-foot .work-contact {
+    opacity: 1;
+  }
+
+  .content-foot .work-title  {
+    font-size: 2.5rem;
+  }
+
+  .content-foot a {
+    font-size: 0.8rem;
+  }
 }
