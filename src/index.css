@@ -655,6 +655,7 @@ body {
   font-size: 7em;
   font-family: var(--font-italiana);
   animation: moveText 20s linear infinite;
+  z-index: 2;
 }
 
 @keyframes moveText {
@@ -671,48 +672,55 @@ body {
 .content-foot {
   height: 40vh;
   display: grid;
+  width: 85vw;
   grid-auto-flow: column;
   grid-auto-columns: 50%;
-  margin: 3rem;
+  margin: 3rem 3rem 3rem auto;
 }
 
 .content-foot .social-contact {
   align-self: end;
   opacity: 0;
+  z-index: 3;
 }
 
 .content-foot .social-title {
   font-family: var(--font-italiana);
-  font-size: 4em;
-  color: var(--cl-font);
+  font-size: 2em;
+  color: var(--cl-font-description);
 }
 
 .content-foot .socials {
   display: flex;
   gap: 1em;
   font-family: var(--font-inria);
-  font-size: 2em;
+  font-size: 3em;
+  font-weight: 200;
 }
 
 .content-foot .socials a {
   color: var(--cl-font);
+  text-decoration: underline solid 2px;
 }
 
 .content-foot .work-contact {
   justify-self: end;
   opacity: 0;
+  z-index: 3;
 }
 
 .content-foot .work-title {
   font-family: var(--font-italiana);
-  font-size: 4em;
-  color: var(--cl-font);
+  font-size: 2em;
+  color: var(--cl-font-description);
 }
 
 .content-foot .email {
   font-family: var(--font-inria);
-  font-size: 2em;
+  font-size: 3em;
   color: var(--cl-font);
+  font-weight: 200;
+  text-decoration: underline solid 2px;
 }
 
 .container-foot .bottom-words{
