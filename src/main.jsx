@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './App.css'
+import Project from './Project.jsx'
 
 import vertexShader from './shaders/vertex.glsl';
 import fragmentShader from './shaders/fragment.glsl';
@@ -13,12 +13,18 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 import createInputEvents from 'simple-input-events';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/kssgarcia-portafolio/" element={<App />} />
+        <Route path="/kssgarcia-portafolio/project/:id" element={<Project />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
-)
+);
 
 const DotScreenShader = {
     uniforms: {

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './App.css'
+
 import axios from 'axios';
 import xml2js from 'xml2js';
 import gsap from "gsap";
@@ -9,8 +12,13 @@ import SplitType from 'split-type';
 import Project from './Project';
 import projectsData from './assets/Projects.json'; 
 
-
 function App() {
+    const navigate = useNavigate();
+
+    const handleImageClick = (project) => {
+        navigate(`/kssgarcia-portafolio/project/${project.key}`, { state: { ...project } });
+    };
+
     gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(Draggable);
@@ -329,9 +337,9 @@ function App() {
                     </div>
                     <div className="list-projects">
                         {Object.entries(projectsData).map(([key, project]) => (
-                            <div className="project">
-                                <div className="container-img">
-                                    <img src={`${project.image}`} alt="Project 1" draggable="false" />
+                            <div key={key} className="project">
+                                <div className="container-img" onClick={() => handleImageClick({ ...project, key })}>
+                                    <img src={project.image} alt="Project 1" draggable="false" />
                                 </div>
                                 <div className="project-info">
                                     <div className="project-name">{key}</div>
