@@ -10,7 +10,6 @@ import * as THREE from "three";
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 import createInputEvents from 'simple-input-events';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -172,8 +171,6 @@ class HeroThree {
     this.renderer.setSize(this.sizes.width, this.sizes.height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-    //this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    //this.controls.enableDamping = true;
   }
 
   Tick() {
@@ -181,9 +178,7 @@ class HeroThree {
 
     this.material.uniforms.uTime.value = elapsedTime;
 
-    //this.controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
     window.requestAnimationFrame(this.Tick.bind(this));
-    //this.renderer.render(this.scene, this.camera);
     this.composer.render(this.scene, this.camera);
 
     this.target.lerp(this.mouse, 0.1);
