@@ -12,12 +12,14 @@ const Project = () => {
     };
 
     return (
-        <div id="container">
-            <div className="container-project">
-                <img src={image} alt={key} />
-                <h1>{key}</h1>
-                <p>{description}</p>
-                <button onClick={handleBack}>Back</button>  // Button to trigger back navigation
+        <div id="project">
+            <div className="project-container">
+                <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
+                <div className="content">
+                    <div className="title">{key}</div>
+                    <p>{description}</p>
+                    <button onClick={handleBack}>Back</button> 
+                </div>
             </div>
         </div>
     );
