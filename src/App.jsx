@@ -6,6 +6,8 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Draggable } from "gsap/Draggable"
 import SplitType from 'split-type';
+import Project from './Project';
+import projectsData from './assets/Projects.json'; 
 
 
 function App() {
@@ -236,10 +238,6 @@ function App() {
                         onRelease() {
                             syncIndex();
                             draggable.isThrowing && (indexIsDirty = true);
-                            console.log(draggable.getDirection("start"));
-                            console.log(draggable.getDirection("end"));
-                            console.log(draggable.getDirection("velocity"));
-                            console.log(boxes);
                             if (draggable.getDirection("start") === "left") {
                                 loop.next({ duration: 0.7, ease: "back.out" })
                             } else if (draggable.getDirection("start") === "right") {
@@ -324,40 +322,23 @@ function App() {
                         <div>Scroll</div>
                     </div>
                 </div>
+
                 <div className="container-projects">
                     <div className="title-projects">
                         Projects
                     </div>
                     <div className="list-projects">
-                        <div className="project project-1">
-                            <div className="container-img">
-                                <img src="proj_1.png" alt="Project 1" draggable="false" />
+                        {Object.entries(projectsData).map(([key, project]) => (
+                            <div className="project">
+                                <div className="container-img">
+                                    <img src={`${project.image}`} alt="Project 1" draggable="false" />
+                                </div>
+                                <div className="project-info">
+                                    <div className="project-name">{key}</div>
+                                    <div className="project-description">{project.description}</div>
+                                </div>
                             </div>
-                            <div className="project-info">
-                                <div className="project-name">Project 1</div>
-                                <div className="project-description">This is the bestr ptoject that has been done in many time</div>
-                            </div>
-                        </div>
-
-                        <div className="project project-2">
-                            <div className="container-img">
-                                <img src="proj_1.png" alt="Project 2" draggable="false" />
-                            </div>
-                            <div className="project-info">
-                                <div className="project-name">Project 2</div>
-                                <div className="project-description">This is the bestr ptoject that has been done in many time</div>
-                            </div>
-                        </div>
-
-                        <div className="project project-3">
-                            <div className="container-img">
-                                <img src="proj_1.png" alt="Project 3" draggable="false" />
-                            </div>
-                            <div className="project-info">
-                                <div className="project-name">Project 3</div>
-                                <div className="project-description">This is the bestr ptoject that has been done in many time</div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                     <div className="button-projects">
                         <button class="prev"></button>

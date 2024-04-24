@@ -1,0 +1,14 @@
+{
+    "projects 1": {
+        "image": "proj_1.png",
+        "description": "I am in project 1"
+    },
+    "projects 2": {
+        "image": "proj_1.png",
+        "description": "I am in project 2"
+    },
+    "projects 3": {
+        "image": "proj_1.png",
+        "description": "I am in project 3"
+    }
+}
