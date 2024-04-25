@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import AnimatedRoutes from './AnimatedRoutes.jsx'
+import AnimatedRoutes from './components/AnimatedRoutes.jsx'
 
 import { BrowserRouter } from 'react-router-dom';
 

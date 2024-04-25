@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import './css/Project.css';
+import Transition from './Transition.jsx';
+import '../css/Project.css';
 
 const Project = () => {
     const location = useLocation();
@@ -13,13 +13,7 @@ const Project = () => {
     };
 
     return (
-        <motion.div 
-        id="project"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        >
+        <Transition>
             <div className="project-container">
                 <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
                 <div className="content">
@@ -28,7 +22,7 @@ const Project = () => {
                     <button onClick={handleBack}>Back</button> 
                 </div>
             </div>
-        </motion.div>
+        </Transition>
     );
 };
 

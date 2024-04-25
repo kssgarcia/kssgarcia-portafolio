@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, ScrollRestoration } from 'react-router-dom';
-import './css/App.css'
-import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import Transition from './Transition.jsx';
+import '../css/App.css'
 
 import axios from 'axios';
 import xml2js from 'xml2js';
@@ -10,7 +10,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Draggable } from "gsap/Draggable"
 import SplitType from 'split-type';
-import projectsData from './assets/Projects.json'; 
+import projectsData from '../assets/Projects.json'; 
 
 function App() {
     const navigate = useNavigate();
@@ -68,7 +68,6 @@ function App() {
         gsap.to('.front-titles .char', { y: 0, opacity: 1, stagger: 0.05, duration: 1 });
 
         const boxes = gsap.utils.toArray(".container-projects .list-projects .project");
-        console.clear();
 
         let activeElement;
         const loop = horizontalLoop(boxes, {
@@ -299,30 +298,7 @@ function App() {
     }, [])
 
     return (
-
-        // <motion.div
-        // className='slide-in'
-        // initial={{ scaleY: 0 }}
-        // animate={{ scaleY: 0 }}
-        // exit={{ scaleY: 1 }}
-        // transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        // ></motion.div>
-
-        // <motion.div
-        // className='slide-out'
-        // initial={{ scaleY: 1 }}
-        // animate={{ scaleY: 0 }}
-        // exit={{ scaleY: 0 }}
-        // transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        // ></motion.div>
-        <>
-        <motion.div 
-        className='app'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        >
+        <Transition>
             <div id="container">
                 <div className="front">
                     <div className="front-titles title-1">
@@ -372,8 +348,8 @@ function App() {
                         ))}
                     </div>
                     <div className="button-projects">
-                        <button class="prev"></button>
-                        <button class="next"></button>
+                        <button className="prev"></button>
+                        <button className="next"></button>
                     </div>
                 </div>
 
@@ -418,8 +394,7 @@ function App() {
                     <div className="line"></div>
                 </div>
             </div>
-        </motion.div >
-        </>
+        </Transition>
     );
 }
 
