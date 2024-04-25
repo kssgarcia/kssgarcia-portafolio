@@ -14,12 +14,14 @@ const Project = () => {
 
     return (
         <Transition>
-            <div className="project-container">
-                <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
-                <div className="content">
-                    <div className="title">{key}</div>
-                    <p>{description}</p>
-                    <button onClick={handleBack}>Back</button> 
+            <div id="project">
+                <div className="project-container">
+                    <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
+                    <div className="content">
+                        <div className="title">{key}</div>
+                        <p>{description}</p>
+                        <button onClick={handleBack}>Back</button>
+                    </div>
                 </div>
             </div>
         </Transition>

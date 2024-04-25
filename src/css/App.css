@@ -797,3 +797,26 @@ body {
     font-size: 0.8rem;
   }
 }
+
+.slide-in {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--cl-bc);
+  transform-origin: top;
+}
+
+.slide-out {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--cl-bc);
+  transform-origin: bottom;
+}
