@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, ScrollRestoration } from 'react-router-dom';
 import './css/App.css'
 import { motion } from 'framer-motion';
 
@@ -315,13 +315,13 @@ function App() {
         // exit={{ scaleY: 0 }}
         // transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         // ></motion.div>
-
+        <>
         <motion.div 
         className='app'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 2 }}
+        transition={{ duration: 0.5 }}
         >
             <div id="container">
                 <div className="front">
@@ -419,6 +419,7 @@ function App() {
                 </div>
             </div>
         </motion.div >
+        </>
     );
 }
 

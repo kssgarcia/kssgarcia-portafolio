@@ -15,11 +15,10 @@ const Project = () => {
     return (
         <motion.div 
         id="project"
-        className='project-pro'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 2 }}
+        transition={{ duration: 0.5 }}
         >
             <div className="project-container">
                 <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
