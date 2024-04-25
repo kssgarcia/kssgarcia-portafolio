@@ -81,9 +81,6 @@ function App() {
             }
         });
 
-
-        boxes.forEach((box, i) => box.addEventListener("click", () => loop.toIndex(i, { duration: 0.7, ease: "back.out" })));
-
         loop.toIndex(0, { duration: 0.0, ease: "back.out" });
 
         document.querySelector(".next").addEventListener("click", () => loop.next({ duration: 0.7, ease: "back.out" }));
@@ -276,15 +273,6 @@ function App() {
             gsap.to('.container-blog .title-blog .char', {
                 scrollTrigger: { trigger: '.container-blog .title-blog', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
                 y: 0, opacity: 1, stagger: 0.05, duration: 0.5
-            });
-            gsap.to('.container-foot .social-contact', {
-                scrollTrigger: { trigger: '.container-foot .container-title', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
-                opacity: 1, duration: 2.0
-            });
-
-            gsap.to('.container-foot .work-contact', {
-                scrollTrigger: { trigger: '.container-foot .container-title', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
-                opacity: 1, duration: 2.0
             });
 
             gsap.utils.toArray('.container-projects .list-projects .project .project-info').forEach(text => {

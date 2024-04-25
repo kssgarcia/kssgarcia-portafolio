@@ -680,7 +680,6 @@ body {
 
 .content-foot .social-contact {
   align-self: end;
-  opacity: 0;
   z-index: 3;
 }
 
@@ -705,7 +704,6 @@ body {
 
 .content-foot .work-contact {
   justify-self: end;
-  opacity: 0;
   z-index: 3;
 }
 
@@ -773,20 +771,12 @@ body {
     left: 5vw;
   }
 
-  .content-foot .social-contact {
-    opacity: 1;
-  }
-
   .content-foot .social-title  {
     font-size: 2.5rem;
   }
 
   .content-foot .email {
     font-size: 0.8rem;
-  }
-
-  .content-foot .work-contact {
-    opacity: 1;
   }
 
   .content-foot .work-title  {
