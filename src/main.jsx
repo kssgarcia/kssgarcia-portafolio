@@ -1,29 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import Project from './Project.jsx'
+import AnimatedRoutes from './AnimatedRoutes.jsx'
 
-import vertexShader from './shaders/vertex.glsl';
-import fragmentShader from './shaders/fragment.glsl';
-
-import * as THREE from "three";
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-
-import createInputEvents from 'simple-input-events';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/kssgarcia-portafolio/" element={<App />} />
-        <Route path="/kssgarcia-portafolio/project/:id" element={<Project />} />
-      </Routes>
+      <AnimatedRoutes />
     </BrowserRouter>
   </React.StrictMode>,
 );
+
+import vertexShader from './shaders/vertex.glsl';
+import fragmentShader from './shaders/fragment.glsl';
+import * as THREE from "three";
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import createInputEvents from 'simple-input-events';
 
 const DotScreenShader = {
     uniforms: {

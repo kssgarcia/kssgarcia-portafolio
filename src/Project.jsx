@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './css/Project.css';
 
 const Project = () => {
@@ -8,11 +9,18 @@ const Project = () => {
     const { key, image, description } = location.state;
 
     const handleBack = () => {
-        navigate(-1);  
+        navigate( '/kssgarcia-portafolio/' );
     };
 
     return (
-        <div id="project">
+        <motion.div 
+        id="project"
+        className='project-pro'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 2 }}
+        >
             <div className="project-container">
                 <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
                 <div className="content">
@@ -21,7 +29,7 @@ const Project = () => {
                     <button onClick={handleBack}>Back</button> 
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

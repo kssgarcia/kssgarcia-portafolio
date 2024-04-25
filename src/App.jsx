@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './css/App.css'
+import { motion } from 'framer-motion';
 
 import axios from 'axios';
 import xml2js from 'xml2js';
@@ -9,7 +10,6 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Draggable } from "gsap/Draggable"
 import SplitType from 'split-type';
-import Project from './Project';
 import projectsData from './assets/Projects.json'; 
 
 function App() {
@@ -299,7 +299,30 @@ function App() {
     }, [])
 
     return (
-        <div>
+
+        // <motion.div
+        // className='slide-in'
+        // initial={{ scaleY: 0 }}
+        // animate={{ scaleY: 0 }}
+        // exit={{ scaleY: 1 }}
+        // transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        // ></motion.div>
+
+        // <motion.div
+        // className='slide-out'
+        // initial={{ scaleY: 1 }}
+        // animate={{ scaleY: 0 }}
+        // exit={{ scaleY: 0 }}
+        // transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        // ></motion.div>
+
+        <motion.div 
+        className='app'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 2 }}
+        >
             <div id="container">
                 <div className="front">
                     <div className="front-titles title-1">
@@ -395,7 +418,7 @@ function App() {
                     <div className="line"></div>
                 </div>
             </div>
-        </div >
+        </motion.div >
     );
 }
 
