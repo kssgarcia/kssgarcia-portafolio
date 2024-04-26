@@ -335,7 +335,7 @@ function App() {
                             </div>
                             <div className="project-info">
                                 <div className="project-name">{key}</div>
-                                <div className="project-description">{project.description}</div>
+                                <div className="project-description">{project.description_short}</div>
                             </div>
                         </div>
                     ))}
