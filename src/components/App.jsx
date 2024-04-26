@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../css/App.css'
 
 import axios from 'axios';
@@ -12,10 +12,12 @@ import SplitType from 'split-type';
 import projectsData from '../assets/Projects.json'; 
 
 function App() {
+    const location = useLocation();
     const navigate = useNavigate();
 
     const handleImageClick = (project) => {
-        navigate(`/kssgarcia-portafolio/project/${project.key}`, { state: { ...project } });
+        const scrollY = window.scrollY;
+        navigate(`/kssgarcia-portafolio/project/${project.key}`, { state: { ...project, scrollY } });
     };
 
     gsap.registerPlugin(useGSAP);
@@ -25,6 +27,8 @@ function App() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
+        window.scrollTo(0, location.state?.scrollY || 0);
+
         axios.get('https://kssgarcia.github.io/OptBlog/blog/index.xml', {
             "Content-Type": "application/xml; charset=utf-8"
         })
@@ -261,15 +265,6 @@ function App() {
             });
             return timeline;
         }
-
-
-
-
-
-
-
-
-
 
         if (!window.matchMedia("only screen and (max-width: 1000px)").matches) {
             new SplitType(".title-projects");

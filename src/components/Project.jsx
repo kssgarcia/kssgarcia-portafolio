@@ -6,10 +6,10 @@ import '../css/Project.css';
 const Project = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { key, image, description } = location.state;
+    const { key, image, description, scrollY } = location.state;
 
     const handleBack = () => {
-        navigate( '/kssgarcia-portafolio/' );
+        navigate( '/kssgarcia-portafolio/', {state: { scrollY }} );
     };
 
     return (
