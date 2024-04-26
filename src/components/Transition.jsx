@@ -32,6 +32,7 @@ function Transition({ children }) {
 
     useGSAP(() => {
         gsap.to(slideIn.current, { scaleY: 0, duration: 1, ease: "custom", delay: 2 })
+        gsap.to(slideIn.current.children, { opacity: 1, duration: 1, ease: "custom", delay: 0.5 })
     }, []);
 
     return (
@@ -43,8 +44,19 @@ function Transition({ children }) {
                 left: 0,
                 width: '100vw',
                 height: '100vh',
-                transformOrigin: 'top'
-            }}></div>
+                transformOrigin: 'top',
+                display: 'grid',
+                placeItems: 'center',
+            }}>
+            <div className="title-enter"style={{
+                    position: 'fixed',
+                    zIndex: 1000,
+                    opacity: 0,
+                }}>
+                Hi...
+            </div>
+            </div>
+
             <div className="slide-out" ref={slideOut} style= {{
                 display: 'grid',
                 placeItems: 'center',
@@ -52,9 +64,6 @@ function Transition({ children }) {
             >
                 <div className="title-transition" style={{
                     position: 'fixed',
-                    top: '40vh',
-                    left: '40vw',
-                    transform: 'translate(-50 %, -50 %)',
                     zIndex: 1000,
                 }}>
                     {title}

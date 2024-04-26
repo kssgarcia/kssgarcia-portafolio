@@ -794,6 +794,16 @@ body {
 
 /* TRANSITION */
 
+.slide-in {
+  background-color: var(--cl-bc);
+}
+
+.title-enter {
+  color: var(--cl-font);
+  font-size: 4rem;
+  font-family: var(--font-italiana);
+}
+
 .slide-out {
   position: fixed;
   z-index: 999;
@@ -809,6 +819,6 @@ body {
 
 .title-transition {
   color: var(--cl-bc);
-  font-size: 10vh;
+  font-size: 7rem;
   font-family: var(--font-italiana);
 }
