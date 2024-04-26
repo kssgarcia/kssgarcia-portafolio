@@ -12,15 +12,16 @@ function Transition({children}) {
 
     useGSAP(() => {
         if (children.key !== displayChildren.key) {
-            gsap.to(slideIn.current, { scaleY: 0, opacity: 0, duration: 0 }) 
             gsap.to(slideOut.current, { scaleY: 1, duration: 1 }).then(() => {
                 setDisplayChildren(children);
                 gsap.to(slideOut.current, { scaleY: 0, duration: 1, delay: 0.4})
             });
-        } else {
-            gsap.to(slideIn.current, { scaleY: 0, duration: 1, delay: 1 }) 
-        }
-    }, [children]);
+        }  
+       }, [children]);
+
+    useGSAP(() => {
+        gsap.to(slideIn.current, { scaleY: 0, duration: 1, delay: 1 }) 
+    }, []);
 
 
     return (
