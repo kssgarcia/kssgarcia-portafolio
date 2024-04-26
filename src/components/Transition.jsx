@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { CustomEase } from "gsap/CustomEase";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, CustomEase);
+CustomEase.create("custom", "M0,0 C0.76,0 0.24,1 1,1");
 
 function Transition({children}) {
     const [displayChildren, setDisplayChildren] = useState(children);
@@ -12,9 +14,9 @@ function Transition({children}) {
 
     useGSAP(() => {
         if (children.key !== displayChildren.key) {
-            gsap.to(slideOut.current, { scaleY: 1, duration: 1 }).then(() => {
+            gsap.to(slideOut.current, { scaleY: 1, duration: 1, ease: "custom" }).then(() => {
                 setDisplayChildren(children);
-                gsap.to(slideOut.current, { scaleY: 0, duration: 1, delay: 0.4})
+                gsap.to(slideOut.current, { scaleY: 0, duration: 1, delay: 0.4, ease: "custom"})
             });
         }  
        }, [children]);
@@ -22,7 +24,6 @@ function Transition({children}) {
     useGSAP(() => {
         gsap.to(slideIn.current, { scaleY: 0, duration: 1, delay: 1 }) 
     }, []);
-
 
     return (
         <div ref={container} >  
