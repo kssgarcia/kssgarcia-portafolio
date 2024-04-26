@@ -247,7 +247,7 @@ function App() {
                             let diffX = Math.abs(Math.abs(draggable.startX) - Math.abs(draggable.x));
                             if (draggable.getDirection("start") === "left" && diffX > 1) {
                                 loop.next({ duration: 0.7, ease: "back.out" })
-                            } else if (draggable.getDirection("start") === "right" && diffX > 10) {
+                            } else if (draggable.getDirection("start") === "right" && diffX > 1) {
                                 loop.previous({ duration: 0.7, ease: "back.out" })
                             }
                         },
