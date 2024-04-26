@@ -98,3 +98,9 @@ body {
   background-color: black;
   transform-origin: bottom;
 }
+
+.title-transition {
+  color: var(--cl-font);
+  font-size: 10vh;
+  font-family: var(--font-italiana);
+}

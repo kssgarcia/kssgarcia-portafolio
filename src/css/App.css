@@ -806,3 +806,9 @@ body {
   transform: scaleY(0);
   transform-origin: bottom;
 }
+
+.title-transition {
+  color: var(--cl-font);
+  font-size: 10vh;
+  font-family: var(--font-italiana);
+}
