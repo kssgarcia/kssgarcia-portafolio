@@ -81,6 +81,8 @@ function App() {
             }
         });
 
+        // boxes.forEach((box, i) => box.addEventListener("click", () => loop.toIndex(i, { duration: 0.8, ease: "power1.inOut" })));
+
         loop.toIndex(0, { duration: 0.0, ease: "back.out" });
 
         document.querySelector(".next").addEventListener("click", () => loop.next({ duration: 0.7, ease: "back.out" }));
@@ -242,9 +244,12 @@ function App() {
                         onRelease() {
                             syncIndex();
                             draggable.isThrowing && (indexIsDirty = true);
-                            if (draggable.getDirection("start") === "left") {
+                            let diffX = Math.abs(Math.abs(draggable.startX) - Math.abs(draggable.x));
+                            if (draggable.getDirection("start") === "left" && diffX > 1) {
+                                console.log("right")
                                 loop.next({ duration: 0.7, ease: "back.out" })
-                            } else if (draggable.getDirection("start") === "right") {
+                            } else if (draggable.getDirection("start") === "right" && diffX > 10) {
+                                console.log("left")
                                 loop.previous({ duration: 0.7, ease: "back.out" })
                             }
                         },
@@ -259,6 +264,15 @@ function App() {
             });
             return timeline;
         }
+
+
+
+
+
+
+
+
+
 
         if (!window.matchMedia("only screen and (max-width: 1000px)").matches) {
             new SplitType(".title-projects");
