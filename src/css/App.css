@@ -792,6 +792,8 @@ body {
   }
 }
 
+/* TRANSITION */
+
 .slide-in {
   position: fixed;
   z-index: 999;

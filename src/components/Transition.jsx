@@ -9,20 +9,6 @@ function Transition({children}) {
         exit: 'exit',
     }
 
-    const opacity = {
-        initial : { opacity: 0 },
-        animate : { opacity: 1 },
-        exit : { opacity: 0 },
-        transition : { duration: 0.5 }
-    }
-
-    const slite_in = {
-        initial : { opacity: 1 },
-        animate : { opacity: 1 },
-        exit : { opacity: 0 },
-        transition : { duration: 0.5 }
-    }
-
     return (
         <div>
         <motion.div
@@ -30,7 +16,7 @@ function Transition({children}) {
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 0 }}
         exit={{ scaleY: 1 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        transition= {{ duration: 0.75, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
         ></motion.div>
 
         <motion.div
@@ -38,7 +24,7 @@ function Transition({children}) {
         initial={{ scaleY: 1 }}
         animate={{ scaleY: 0 }}
         exit={{ scaleY: 0 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        transition= {{ duration: 0.75, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
         ></motion.div>
 
         <motion.div {...anim}>
