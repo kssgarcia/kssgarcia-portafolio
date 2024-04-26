@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Transition from './Transition.jsx';
 import '../css/App.css'
 
 import axios from 'axios';
@@ -298,103 +297,101 @@ function App() {
     }, [])
 
     return (
-        <Transition>
-            <div id="container">
-                <div className="front">
-                    <div className="front-titles title-1">
-                        PORTAFOLIO
-                    </div>
-                    <div className="front-titles title-2">
-                        MECHANICAL
-                    </div>
-                    <div className="front-titles title-3">
-                        ENGINEER
-                    </div>
-
-                    <div className="left-words words">
-                        <div className="word-1">KEVIN</div>
-                        <div className="word-2">PORTAFOLIO V1</div>
-                    </div>
-                    <div className="right-words words">
-                        <div className="word-1">SOFTWARE</div>
-                        <div className="word-2">FRIENDS</div>
-                    </div>
-
-                    <div className="top-words words">
-                        <div className="word-1">"FEM"</div>
-                        <div className="word-2">/*THE BEST 2024*/</div>
-                        <div className="word-3">--MACHINE LEARNING--</div>
-                    </div>
-                    <div className="scroll-down">
-                        <div>Scroll</div>
-                    </div>
+        <div id="container">
+            <div className="front">
+                <div className="front-titles title-1">
+                    PORTAFOLIO
+                </div>
+                <div className="front-titles title-2">
+                    MECHANICAL
+                </div>
+                <div className="front-titles title-3">
+                    ENGINEER
                 </div>
 
-                <div className="container-projects">
-                    <div className="title-projects">
-                        Projects
-                    </div>
-                    <div className="list-projects">
-                        {Object.entries(projectsData).map(([key, project]) => (
-                            <div key={key} className="project">
-                                <div className="container-img" onClick={() => handleImageClick({ ...project, key })}>
-                                    <img src={project.image} alt="Project 1" draggable="false" />
-                                </div>
-                                <div className="project-info">
-                                    <div className="project-name">{key}</div>
-                                    <div className="project-description">{project.description}</div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="button-projects">
-                        <button className="prev"></button>
-                        <button className="next"></button>
-                    </div>
+                <div className="left-words words">
+                    <div className="word-1">KEVIN</div>
+                    <div className="word-2">PORTAFOLIO V1</div>
+                </div>
+                <div className="right-words words">
+                    <div className="word-1">SOFTWARE</div>
+                    <div className="word-2">FRIENDS</div>
                 </div>
 
-                <div className="container-blog">
-                    <div className="title-blog">
-                        Blog
-                    </div>
-                    <div className="content-blog">
-                        <ul>
-                            {posts.map((post, index) => (
-                                <li key={index}>
-                                    <a href={post.link} target="_blank" rel="noopener noreferrer">{post.title}</a>
-                                    <p>Published on: {post.pubDate}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                <div className="top-words words">
+                    <div className="word-1">"FEM"</div>
+                    <div className="word-2">/*THE BEST 2024*/</div>
+                    <div className="word-3">--MACHINE LEARNING--</div>
                 </div>
-                <div className="container-foot">
-                    <div className="container-title">
-                        <div className="title-foot">Do you have some question or a project to share?</div>
-                        <div className="title-foot">Do you have some question or a project to share?</div>
-                    </div>
-                    <div className="content-foot">
-                        <div className="social-contact">
-                            <div className="social-title">Socials</div>
-                            <div className="socials">
-                                <a href="" className="gihub">Github</a>
-                                <a href="" className="instagram">Instagram</a>
-                            </div>
-                        </div>
-                        <div className="work-contact">
-                            <div className="work-title">Email me!</div>
-                            <div className="email">kssgarcia@outlook.com</div>
-                        </div>
-                    </div>
-                    <div className="bottom-words">
-                        <div className="word-1">"FEM"</div>
-                        <div className="word-2">/*THE BEST 2024*/</div>
-                        <div className="word-3">--MACHINE LEARNING--</div>
-                    </div>
-                    <div className="line"></div>
+                <div className="scroll-down">
+                    <div>Scroll</div>
                 </div>
             </div>
-        </Transition>
+
+            <div className="container-projects">
+                <div className="title-projects">
+                    Projects
+                </div>
+                <div className="list-projects">
+                    {Object.entries(projectsData).map(([key, project]) => (
+                        <div key={key} className="project">
+                            <div className="container-img" onClick={() => handleImageClick({ ...project, key })}>
+                                <img src={project.image} alt="Project 1" draggable="false" />
+                            </div>
+                            <div className="project-info">
+                                <div className="project-name">{key}</div>
+                                <div className="project-description">{project.description}</div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="button-projects">
+                    <button className="prev"></button>
+                    <button className="next"></button>
+                </div>
+            </div>
+
+            <div className="container-blog">
+                <div className="title-blog">
+                    Blog
+                </div>
+                <div className="content-blog">
+                    <ul>
+                        {posts.map((post, index) => (
+                            <li key={index}>
+                                <a href={post.link} target="_blank" rel="noopener noreferrer">{post.title}</a>
+                                <p>Published on: {post.pubDate}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+            <div className="container-foot">
+                <div className="container-title">
+                    <div className="title-foot">Do you have some question or a project to share?</div>
+                    <div className="title-foot">Do you have some question or a project to share?</div>
+                </div>
+                <div className="content-foot">
+                    <div className="social-contact">
+                        <div className="social-title">Socials</div>
+                        <div className="socials">
+                            <a href="" className="gihub">Github</a>
+                            <a href="" className="instagram">Instagram</a>
+                        </div>
+                    </div>
+                    <div className="work-contact">
+                        <div className="work-title">Email me!</div>
+                        <div className="email">kssgarcia@outlook.com</div>
+                    </div>
+                </div>
+                <div className="bottom-words">
+                    <div className="word-1">"FEM"</div>
+                    <div className="word-2">/*THE BEST 2024*/</div>
+                    <div className="word-3">--MACHINE LEARNING--</div>
+                </div>
+                <div className="line"></div>
+            </div>
+        </div>
     );
 }
 

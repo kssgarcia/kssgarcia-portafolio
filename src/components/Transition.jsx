@@ -1,35 +1,28 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 function Transition({children}) {
-    const anim = {
-        initial: 'initial',
-        animate: 'enter',
-        exit: 'exit',
-    }
+    const [displayChildren, setDisplayChildren] = useState(children);
+    const container = useRef(null);
+
+    useGSAP(() => {
+        if (children.key !== displayChildren.key) {
+            gsap.to(container.current, { opacity: 0, duration: 1 }).then(() => {
+                setDisplayChildren(children);
+
+                gsap.to(container.current, { opacity: 1, duration: 1 })
+            });
+        };
+    }, [children]);
+
 
     return (
-        <div>
-        <motion.div
-        className='slide-in'
-        initial={{ scaleY: 0 }}
-        animate={{ scaleY: 0 }}
-        exit={{ scaleY: 1 }}
-        transition= {{ duration: 0.75, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-        ></motion.div>
-
-        <motion.div
-        className='slide-out'
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0 }}
-        exit={{ scaleY: 0 }}
-        transition= {{ duration: 0.75, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-        ></motion.div>
-
-        <motion.div {...anim}>
-        {children}
-        </motion.div>
-        </div>
+        <div ref={container}>  
+            {displayChildren}
+        </div>  
     );
 }
 

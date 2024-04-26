@@ -13,19 +13,16 @@ const Project = () => {
     };
 
     return (
-        <Transition>
-            <div id="project">
-                <div className="project-container">
-                    <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
-                    <div className="content">
-                        <div className="title">{key}</div>
-                        <p>{description}</p>
-                        <button onClick={handleBack}>Back</button>
-                    </div>
+        <div id="project">
+            <div className="project-container">
+                <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
+                <div className="content">
+                    <div className="title">{key}</div>
+                    <p>{description}</p>
+                    <button onClick={handleBack}>Back</button>
                 </div>
             </div>
-        </Transition>
+        </div>
     );
-};
-
+}
 export default Project;
