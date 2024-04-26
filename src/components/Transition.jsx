@@ -22,7 +22,7 @@ function Transition({children}) {
        }, [children]);
 
     useGSAP(() => {
-        gsap.to(slideIn.current, { scaleY: 0, duration: 1, delay: 1 }) 
+        gsap.to(slideIn.current, { scaleY: 0, duration: 1, ease: "custom", delay: 2 }) 
     }, []);
 
     return (
