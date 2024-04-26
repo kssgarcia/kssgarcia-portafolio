@@ -95,12 +95,13 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: black;
+  background-color: var(--cl-font);
+  transform: scaleY(0);
   transform-origin: bottom;
 }
 
 .title-transition {
-  color: var(--cl-font);
+  color: var(--cl-bc);
   font-size: 10vh;
   font-family: var(--font-italiana);
 }

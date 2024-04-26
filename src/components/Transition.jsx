@@ -43,7 +43,6 @@ function Transition({ children }) {
                 left: 0,
                 width: '100vw',
                 height: '100vh',
-                backgroundColor: 'black',
                 transformOrigin: 'top'
             }}></div>
             <div className="slide-out" ref={slideOut} style= {{
