@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { div } from 'three/examples/jsm/nodes/Nodes.js';
 
 function Transition({children}) {
     const anim = {

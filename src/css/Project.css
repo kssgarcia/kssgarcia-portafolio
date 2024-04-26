@@ -95,7 +95,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--cl-bc);
+  background-color: black;
   transform-origin: top;
 }
 
@@ -107,6 +107,6 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--cl-bc);
+  background-color: black;
   transform-origin: bottom;
 }
