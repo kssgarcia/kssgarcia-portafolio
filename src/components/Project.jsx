@@ -21,9 +21,9 @@ const Project = () => {
                 </div>
                 <div className="content">
                     <p>{description}</p>
-                    <button onClick={handleBack}>Back</button>
                 </div>
             </div>
+            <div className="back-main" onClick={handleBack}></div>
         </div>
     );
 }

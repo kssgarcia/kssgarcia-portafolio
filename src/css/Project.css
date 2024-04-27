@@ -97,14 +97,99 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 70%;
   padding: 0 2em;
 }
 
 .project-container .content p {
-  color: var(--cl-font-description);
-  font-size: 1em;
+  color: var(--cl-font);
+  font-size: 1.2em;
   font-family: var(--font-inria);
+  font-weight: 300;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  line-height: 1.5;
+}
+
+.back-main {
+  position: absolute;
+  z-index: 3;
+  top: 5vh;
+  right: 5vh;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--cl-font);
+  border-radius: 2rem 2rem 2rem 2rem;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.back-main::before {
+  content: "";
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-top: 5px solid var(--cl-bc);
+  border-left: 5px solid var(--cl-bc);
+  transform: rotate(-45deg);
+  background-color: transparent;
+  top: 37%;
+  right: 32%;
+  transition: border 0.5s;
+}
+
+@media screen and (min-width: 1000px) {
+  .back-main:hover {
+    background-color: var(--cl-bc);
+    color: var(--cl-font);
+  }
+
+  .back-main:hover::before {
+    border-top: 5px solid var(--cl-font);
+    border-left: 5px solid var(--cl-font);
+    transform: rotate(-45deg);
+    transition: border 0.5s;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .project-container {
+    position: relative;
+    z-index: 1;
+    height: auto;
+    width: 100vw;
+    border-radius: 0 0 0 0;
+    background-color: var(--cl-bc);
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-columns: 100% 100%;
+  }
+
+  .project-container .content {
+    width: 90vw;
+    padding: 0;
+    margin: 0 auto 0 auto;
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  .project-container .img-part {
+    height: 40vh;
+    padding-bottom: 3em;
+  }
+
+  .project-container img {
+    align-self: end;
+  }
+
+  .project-container .img-part .title {
+    top: 10vh;
+    font-size: 3rem;
+  }
+
+  .back-main {
+    transform: scale(0.8);
+    top: 2vh;
+    right: 2vw;
+  }
 }
 
 /* TRANSITION */
@@ -137,3 +222,13 @@ body {
   font-size: 7rem;
   font-family: var(--font-italiana);
 }
+
+@media screen and (max-width: 1000px) {
+  .title-enter {
+    font-size: 3rem;
+  }
+
+  .title-transition {
+    font-size: 5rem;
+  }
+} 
