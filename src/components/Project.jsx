@@ -16,7 +16,9 @@ const Project = () => {
         <div id="project">
             <div className="project-container">
                 <div className="img-part">
-                <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
+                    <div className="box-image">
+                        <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
+                    </div>
                     <div className="title">{key}</div>
                 </div>
                 <div className="content">
