@@ -13,7 +13,6 @@ function Transition({ children }) {
 
     const [displayChildren, setDisplayChildren] = useState(children);
     const container = useRef(null);
-    const slideIn = useRef(null);
     const slideOut = useRef(null);
 
     useGSAP(() => {
@@ -31,33 +30,15 @@ function Transition({ children }) {
     }, [children]);
 
     useGSAP(() => {
-        gsap.to(slideIn.current, { scaleY: 0, duration: 1, ease: "custom", delay: 2 })
-        gsap.to(slideIn.current.children, { opacity: 1, duration: 1, ease: "custom", delay: 0.5 })
+        const slideIn = document.querySelector('.slide-in');
+        const slideInChildren = document.querySelector('.slide-in .title-enter');
+        gsap.to(slideIn, { scaleY: 0, duration: 1, ease: "custom", delay: 2 })
+        gsap.to(slideInChildren, { opacity: 1, duration: 1, ease: "custom", delay: 0.5 })
     }, []);
 
     return (
         <div ref={container} >
-            <div className="slide-in" ref={slideIn} style={{
-                position: 'fixed',
-                zIndex: 999,
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
-                transformOrigin: 'top',
-                display: 'grid',
-                placeItems: 'center',
-            }}>
-            <div className="title-enter"style={{
-                    position: 'fixed',
-                    zIndex: 1000,
-                    opacity: 0,
-                }}>
-                Hi...
-            </div>
-            </div>
-
-            <div className="slide-out" ref={slideOut} style= {{
+            <div className="slide-out" ref={slideOut} style={{
                 display: 'grid',
                 placeItems: 'center',
             }}
