@@ -273,6 +273,46 @@ body {
   transition: transform 0.3s;
 }
 
+
+.container-projects .active .container-img::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-top: 5px solid var(--cl-font);
+  border-left: 5px solid var(--cl-font);
+  background-color: transparent;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.container-projects .active .container-img::after {
+  content: "";
+  position: absolute;
+  top: 1.8rem;
+  right: 0.6rem;
+  width: 2rem;
+  height: 5px;
+  background-color: var(--cl-font);
+  transform: rotate(45deg);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+@media screen and (min-width: 1000px) {
+  .container-projects .active .container-img:hover::before {
+    opacity: 1;
+  }
+
+  .container-projects .active .container-img:hover::after {
+    opacity: 1;
+  }
+}
+
 .container-projects .project .container-img {
   width: 100%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -429,6 +469,16 @@ body {
   .container-projects button {
     gap: 0;
     transform: scale(0.5);
+  }
+
+  .container-projects .active .container-img::before {
+    opacity: 1;
+    right: 4rem;
+  }
+
+  .container-projects .active .container-img::after {
+    opacity: 1;
+    right: 3.6rem;
   }
 }
 

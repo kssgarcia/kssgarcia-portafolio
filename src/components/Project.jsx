@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Transition from './Transition.jsx';
 import '../css/Project.css';
@@ -11,6 +11,10 @@ const Project = () => {
     const handleBack = () => {
         navigate( '/kssgarcia-portafolio/', {state: { scrollY }} );
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div id="project">
