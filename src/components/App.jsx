@@ -54,9 +54,25 @@ function App() {
         if (!window.matchMedia("only screen and (max-width: 1000px)").matches) {
             new SplitType('.container-blog li a');
             gsap.utils.toArray('.container-blog li a').forEach(text => {
-                gsap.to(text.querySelectorAll('.char'), {
-                    scrollTrigger: { trigger: text, start: 'center bottom', end: 'center bottom', toggleActions: 'restart none reverse none' },
-                    opacity: 1, stagger: 0.01, duration: 0.5
+                const anim = gsap.to(text.querySelectorAll('.char'), {
+                    opacity: 1,
+                    stagger: 0.02,
+                    paused: true
+                });
+              
+                ScrollTrigger.create({
+                    trigger: text,
+                    start: 'center bottom',
+                    end: 'center bottom',
+                    onEnter: () => {
+                        anim.duration(1).play(); // Play forward with duration 0.5s
+                    },
+                    onLeaveBack: () => {
+                        anim.reverse(); // Play in reverse with duration 0.8s
+                    },
+                    onEnterBack: () => {
+                        anim.reverse(); // Play in reverse when re-entering from the bottom
+                    }
                 });
             });
         }
@@ -76,7 +92,6 @@ function App() {
         gsap.to('.front-titles .char', { y: 0, opacity: 1, stagger: 0.05, duration: 1, delay: 2.5 });
 
         const boxes = gsap.utils.toArray(".container-projects .list-projects .project");
-
         let activeElement;
         const loop = horizontalLoop(boxes, {
             paused: true,
@@ -277,19 +292,61 @@ function App() {
             new SplitType(".container-projects .list-projects .project-name");
             new SplitType(".container-projects .list-projects .project-description");
 
-            gsap.to('.container-projects .title-projects .char', {
-                scrollTrigger: { trigger: '.container-projects .title-projects', start: 'bottom bottom', end: 'bottom bottom', toggleActions: 'restart none reverse none' },
-                y: 0, opacity: 1, stagger: 0.05, duration: 0.5
+            const proj_elem = document.querySelectorAll('.container-projects .title-projects');
+            const proj_anim = gsap.to('.container-projects .title-projects .char', {y: 0, opacity: 1, stagger: 0.05, duration: 0.5, paused: true});
+            ScrollTrigger.create({
+                trigger: proj_elem,
+                start: 'center bottom',
+                end: 'center bottom',
+                onEnter: () => {
+                    proj_anim.play(); // Play forward with duration 0.5s
+                },
+                onLeaveBack: () => {
+                    proj_anim.reverse(); // Play in reverse with duration 0.8s
+                },
+                onEnterBack: () => {
+                    proj_anim.reverse(); // Play in reverse when re-entering from the bottom
+                }
             });
-            gsap.to('.container-blog .title-blog .char', {
-                scrollTrigger: { trigger: '.container-blog .title-blog', start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
-                y: 0, opacity: 1, stagger: 0.05, duration: 0.5
+
+            const blog_elem = document.querySelectorAll('.container-blog .title-blog');
+            const blog_anim = gsap.to('.container-blog .title-blog .char', {y: 0, opacity: 1, stagger: 0.05, duration: 0.5, paused: true});
+            ScrollTrigger.create({
+                trigger: blog_elem,
+                start: 'center bottom',
+                end: 'center bottom',
+                onEnter: () => {
+                    blog_anim.play(); // Play forward with duration 0.5s
+                },
+                onLeaveBack: () => {
+                    blog_anim.reverse(); // Play in reverse with duration 0.8s
+                },
+                onEnterBack: () => {
+                    blog_anim.reverse(); // Play in reverse when re-entering from the bottom
+                }
             });
 
             gsap.utils.toArray('.container-projects .list-projects .project .project-info').forEach(text => {
-                gsap.to(text.querySelectorAll('.char'), {
-                    scrollTrigger: { trigger: text, start: 'top bottom', end: 'top bottom', toggleActions: 'restart none reverse none' },
-                    opacity: 1, stagger: 0.01, duration: 0.5
+                const anim = gsap.to(text.querySelectorAll('.char'), {
+                    opacity: 1,
+                    stagger: 0.01,
+                    duration: 0.5,
+                    paused: true
+                });
+              
+                ScrollTrigger.create({
+                    trigger: text,
+                    start: 'center bottom',
+                    end: 'center bottom',
+                    onEnter: () => {
+                        anim.duration(1).play(); // Play forward with duration 0.5s
+                    },
+                    onLeaveBack: () => {
+                        anim.reverse(); // Play in reverse with duration 0.8s
+                    },
+                    onEnterBack: () => {
+                        anim.reverse(); // Play in reverse when re-entering from the bottom
+                    }
                 });
             });
 
