@@ -201,10 +201,6 @@ body {
   .front-titles {
     font-size: 7rem;
   }
-
-  #cursor {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 1500px) {
@@ -219,6 +215,10 @@ body {
     font-size: 3.5rem;
     margin: 0 auto 0 auto;
     width: fit-content;
+  }
+
+  #cursor {
+    display: none;
   }
 }
 
