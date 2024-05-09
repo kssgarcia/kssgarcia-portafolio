@@ -14,6 +14,8 @@ import projectsData from '../assets/Projects.json';
 function App() {
     const location = useLocation();
     const navigate = useNavigate();
+    const [hover, setHover] = useState(false);
+    const [posts, setPosts] = useState([]);
 
     const handleImageClick = (project) => {
         const scrollY = window.scrollY;
@@ -23,8 +25,6 @@ function App() {
     gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(Draggable);
-
-    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         window.scrollTo(0, location.state?.scrollY || 0);
@@ -77,6 +77,33 @@ function App() {
             });
         }
     }, [posts]); 
+
+    useGSAP(() => {
+        gsap.utils.toArray('.container-projects .list-projects img').forEach(img => {
+            const cursorAnim = gsap.to('#cursor', {
+                scale: 5,
+                paused: true
+            });
+
+            const cursorAnimReve = gsap.to('#cursor', {
+                scale: 1,
+                paused: true
+            });
+
+            const svgAnim = gsap.to('#svg-cursor', {
+                transform: "scale3d(0.2, 0.2, 0.2) rotate(-45deg)",
+            });
+
+            img.addEventListener("mouseenter", () => {
+                cursorAnim.play();
+                svgAnim.play();
+            });
+            img.addEventListener("mouseleave", () => {
+                cursorAnimReve.play();
+                svgAnim.reverse();
+            });
+        });
+    }, [hover]);
 
     useGSAP(() => {
         new SplitType(".title-1");
@@ -288,7 +315,7 @@ function App() {
             new SplitType(".container-projects .list-projects .project-description");
 
             const proj_elem = document.querySelectorAll('.container-projects .title-projects');
-            const proj_anim = gsap.to('.container-projects .title-projects .char', {y: 0, opacity: 1, stagger: 0.05, duration: 0.5, paused: true});
+            const proj_anim = gsap.to('.container-projects .title-projects .char', { y: 0, opacity: 1, stagger: 0.05, duration: 0.5, paused: true });
             ScrollTrigger.create({
                 trigger: proj_elem,
                 start: 'center bottom',
@@ -305,7 +332,7 @@ function App() {
             });
 
             const blog_elem = document.querySelectorAll('.container-blog .title-blog');
-            const blog_anim = gsap.to('.container-blog .title-blog .char', {y: 0, opacity: 1, stagger: 0.05, duration: 0.5, paused: true});
+            const blog_anim = gsap.to('.container-blog .title-blog .char', { y: 0, opacity: 1, stagger: 0.05, duration: 0.5, paused: true });
             ScrollTrigger.create({
                 trigger: blog_elem,
                 start: 'center bottom',
@@ -328,7 +355,7 @@ function App() {
                     duration: 0.5,
                     paused: true
                 });
-              
+
                 ScrollTrigger.create({
                     trigger: text,
                     start: 'center bottom',
@@ -388,7 +415,10 @@ function App() {
                     {Object.entries(projectsData).map(([key, project]) => (
                         <div key={key} className="project">
                             <div className="container-img" onClick={() => handleImageClick({ ...project, key })}>
-                                <img src={project.image} alt="Project 1" draggable="false" />
+                                <img 
+                                    onMouseEnter={() => setHover(true)}
+                                    onMouseLeave={() => setHover(false)}
+                                    src={project.image} alt="Project 1" draggable="false" />
                             </div>
                             <div className="project-info">
                                 <div className="project-name">{key}</div>

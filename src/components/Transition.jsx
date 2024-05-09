@@ -34,6 +34,17 @@ function Transition({ children }) {
         const slideInChildren = document.querySelector('.slide-in .title-enter');
         gsap.to(slideIn, { scaleY: 0, duration: 1, ease: "custom", delay: 2 })
         gsap.to(slideInChildren, { opacity: 1, duration: 1, ease: "custom", delay: 0.5 })
+
+        gsap.set("#cursor", { xPercent: -50, yPercent: -50 });
+        gsap.set("#svg-cursor", { transform: "scale3d(0, 0, 0)" });
+
+        let xTo = gsap.quickTo("#cursor", "x", { duration: 0.6, ease: "power3" }),
+            yTo = gsap.quickTo("#cursor", "y", { duration: 0.6, ease: "power3" });
+
+        window.addEventListener("mousemove", e => {
+            xTo(e.clientX);
+            yTo(e.clientY);
+        });
     }, []);
 
     return (
@@ -49,6 +60,18 @@ function Transition({ children }) {
                 }}>
                     {title}
                 </div>
+            </div>
+            <div id="cursor" style={{
+                position: 'fixed',
+                zIndex: 10,
+                top: 0,
+                left: 0,
+                width: '15px',
+                height: '15px',
+                borderRadius: '100%',
+                backgroundColor: 'rgb(255,252,225)',
+            }}>
+                <img id="svg-cursor" src="cursor.svg" alt="Cursor" />
             </div>
             {displayChildren}
         </div>
