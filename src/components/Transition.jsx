@@ -36,7 +36,6 @@ function Transition({ children }) {
         gsap.to(slideInChildren, { opacity: 1, duration: 1, ease: "custom", delay: 0.5 })
 
         gsap.set("#cursor", { xPercent: -50, yPercent: -50 });
-        gsap.set("#svg-cursor", { transform: "scale3d(0, 0, 0)" });
 
         let xTo = gsap.quickTo("#cursor", "x", { duration: 0.6, ease: "power3" }),
             yTo = gsap.quickTo("#cursor", "y", { duration: 0.6, ease: "power3" });
@@ -71,7 +70,10 @@ function Transition({ children }) {
                 borderRadius: '100%',
                 backgroundColor: 'rgb(255,252,225)',
             }}>
-                <img id="svg-cursor" src="cursor.svg" alt="Cursor" />
+                <img style={{
+                transform: 'scale3d(0, 0, 0)'
+            }}
+                id="svg-cursor" src="cursor.svg" alt="Cursor" />
             </div>
             {displayChildren}
         </div>

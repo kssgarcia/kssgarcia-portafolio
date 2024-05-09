@@ -216,10 +216,6 @@ body {
     margin: 0 auto 0 auto;
     width: fit-content;
   }
-
-  #cursor {
-    display: none;
-  }
 }
 
 /* PROJECT SECTION */
@@ -298,7 +294,6 @@ body {
 @media screen and (min-width: 1000px) {
   .container-projects .active img:hover {
     transform: scale(1.1);
-    cursor: none;
   }
 }
 

@@ -79,30 +79,33 @@ function App() {
     }, [posts]); 
 
     useGSAP(() => {
-        gsap.utils.toArray('.container-projects .list-projects img').forEach(img => {
-            const cursorAnim = gsap.to('#cursor', {
-                scale: 5,
-                paused: true
-            });
-
-            const cursorAnimReve = gsap.to('#cursor', {
-                scale: 1,
-                paused: true
-            });
-
-            const svgAnim = gsap.to('#svg-cursor', {
-                transform: "scale3d(0.2, 0.2, 0.2) rotate(-45deg)",
-            });
-
-            img.addEventListener("mouseenter", () => {
-                cursorAnim.play();
-                svgAnim.play();
-            });
-            img.addEventListener("mouseleave", () => {
-                cursorAnimReve.play();
-                svgAnim.reverse();
-            });
+        const cursorAnim = gsap.to('#cursor', {
+            scale: 5,
+            paused: true
         });
+
+        const cursorAnimRever = gsap.to('#cursor', {
+            scale: 1,
+            paused: true
+        });
+
+        const svgAnim = gsap.to('#svg-cursor', {
+            transform: "scale3d(0.2, 0.2, 0.2) rotate(-45deg)",
+            paused: true
+        });
+
+        const svgAnimRever = gsap.to('#svg-cursor', {
+            transform: "scale3d(0, 0, 0) rotate(45deg)",
+            paused: true
+        });
+
+        if (hover) {
+            cursorAnim.play();
+            svgAnim.play();
+        } else {
+            cursorAnimRever.play();
+            svgAnimRever.play();
+        }
     }, [hover]);
 
     useGSAP(() => {
@@ -440,7 +443,10 @@ function App() {
                 <div className="content-blog">
                     <ul>
                         {posts.map((post, index) => (
-                            <li key={index}>
+                            <li
+                                onMouseEnter={() => setHover(true)}
+                                onMouseLeave={() => setHover(false)}
+                                key={index}>
                                 <a href={post.link} target="_blank" rel="noopener noreferrer">{post.title}</a>
                                 <p>Published on: {post.pubDate}</p>
                             </li>
