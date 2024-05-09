@@ -10,7 +10,7 @@
   --cl-font: rgb(255,252,225);
   --cl-bc-img: #1e1f1e;
   --cl-font-description: #7c7c6f;
-  --cl-bc-post: #99BEB5;
+  --cl-bc-post: #412f21;
 }
 
 body, html {
@@ -274,18 +274,22 @@ body {
   -webkit-filter: sepia(0) blur(0);
   filter: sepia(0) blur(0);
   transition: transform .6s ease;
-  transform: scale(1);
 }
 
 .container-projects .project .container-img {
   width: 100%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   overflow: hidden;
-  border-radius: 1em;
+  border-radius: 0.5em;
+  transform: scale(0.8);
+  transition: transform 0.5s, filter 0.5s;
+}
+
+.container-projects .active .container-img {
+  transform: scale(1);
 }
 
 .container-projects .project img {
-  transform: scale(0.8);
   width: 100%;
   height: 100%;
   transition: transform 0.5s, filter 0.5s;
@@ -536,7 +540,7 @@ body {
     width: 90%;
     transform: scaleY(0);
     transform-origin: bottom;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.4s ease-in-out;
     background-color: var(--cl-bc-post);
     z-index: -1;
   }
