@@ -6,7 +6,7 @@ import '../css/Project.css';
 const Project = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { key, image, description, scrollY } = location.state;
+    const { key, image, description, number, topics, scrollY } = location.state;
 
     const handleBack = () => {
         navigate( '/kssgarcia-portafolio/', {state: { scrollY }} );
@@ -23,6 +23,8 @@ const Project = () => {
                     <div className="box-image">
                         <img src={`/kssgarcia-portafolio/${image}`} alt={key} />
                     </div>
+                    <div className="number">{number}</div>
+                    <div className="topics">{topics}</div>
                     <div className="title">{key}</div>
                 </div>
                 <div className="content">
