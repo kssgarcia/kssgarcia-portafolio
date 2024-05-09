@@ -83,11 +83,6 @@ function App() {
         new SplitType(".title-2");
         new SplitType(".title-3");
 
-        const slideIn = document.querySelector('.slide-in');
-        const slideInChildren = document.querySelector('.slide-in .title-enter');
-        gsap.to(slideIn, { scaleY: 0, duration: 1, ease: "custom", delay: 2 })
-        gsap.to(slideInChildren, { opacity: 1, duration: 1, ease: "custom", delay: 0.5 })
-
         gsap.to(".words", { opacity: 1, delay: 3.5 });
         gsap.to('.front-titles .char', { y: 0, opacity: 1, stagger: 0.05, duration: 1, delay: 2.5 });
 

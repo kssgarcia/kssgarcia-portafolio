@@ -269,8 +269,8 @@ body {
 
 .container-projects .list-projects .active img {
   filter: blur(0px);
+  transition: transform .6s ease;
   transform: scale(1);
-  transition: transform 0.3s;
 }
 
 
@@ -330,7 +330,7 @@ body {
 
 @media screen and (min-width: 1000px) {
   .container-projects .active img:hover {
-    transform: scale(1.01);
+    transform: scale(1.1);
   }
 }
 

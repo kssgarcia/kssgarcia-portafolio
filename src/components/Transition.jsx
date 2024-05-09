@@ -29,6 +29,13 @@ function Transition({ children }) {
         }
     }, [children]);
 
+    useGSAP(() => {
+        const slideIn = document.querySelector('.slide-in');
+        const slideInChildren = document.querySelector('.slide-in .title-enter');
+        gsap.to(slideIn, { scaleY: 0, duration: 1, ease: "custom", delay: 2 })
+        gsap.to(slideInChildren, { opacity: 1, duration: 1, ease: "custom", delay: 0.5 })
+    }, []);
+
     return (
         <div ref={container} >
             <div className="slide-out" ref={slideOut} style={{
