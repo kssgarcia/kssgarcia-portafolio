@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Transition from './Transition.jsx';
+import gsap from "gsap";
 import '../css/Project.css';
 
 const Project = () => {
@@ -13,6 +13,14 @@ const Project = () => {
     };
 
     useEffect(() => {
+        gsap.to('#cursor', {
+            scale: 1,
+        });
+
+        gsap.to('#svg-cursor', {
+            transform: "scale3d(0, 0, 0) rotate(45deg)",
+        });
+
         window.scrollTo(0, 0);
     }, []);
 

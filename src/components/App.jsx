@@ -17,30 +17,7 @@ function App() {
     const [hover, setHover] = useState(false);
     const [posts, setPosts] = useState([]);
 
-    const cursorAnim = gsap.to('#cursor', {
-        scale: 5,
-        paused: true
-    });
-
-    const cursorAnimRever = gsap.to('#cursor', {
-        scale: 1,
-        paused: true
-    });
-
-    const svgAnim = gsap.to('#svg-cursor', {
-        transform: "scale3d(0.2, 0.2, 0.2) rotate(-45deg)",
-        paused: true
-    });
-
-    const svgAnimRever = gsap.to('#svg-cursor', {
-        transform: "scale3d(0, 0, 0) rotate(45deg)",
-        paused: true
-    });
-
     const handleImageClick = (project) => {
-        cursorAnimRever.play();
-        svgAnimRever.play();
-
         const scrollY = window.scrollY;
         navigate(`/kssgarcia-portafolio/project/${project.key}`, { state: { ...project, scrollY } });
     };
@@ -102,6 +79,26 @@ function App() {
     }, [posts]); 
 
     useGSAP(() => {
+        let cursorAnim = gsap.to('#cursor', {
+            scale: 5,
+            paused: true
+        });
+
+        let cursorAnimRever = gsap.to('#cursor', {
+            scale: 1,
+            paused: true
+        });
+
+        let svgAnim = gsap.to('#svg-cursor', {
+            transform: "scale3d(0.2, 0.2, 0.2) rotate(-45deg)",
+            paused: true
+        });
+
+        let svgAnimRever = gsap.to('#svg-cursor', {
+            transform: "scale3d(0, 0, 0) rotate(45deg)",
+            paused: true
+        });
+
         if (hover) {
             cursorAnim.play();
             svgAnim.play();

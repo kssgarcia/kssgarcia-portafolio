@@ -58,7 +58,6 @@ body {
 
 .project-container .img-part {
   position: relative;
-  height: 50vh;
   justify-self: center;
   align-self: center;
   display: grid;
@@ -111,7 +110,7 @@ body {
   position: absolute;
   z-index: 4;
   color: var(--cl-font-description);
-  left: 0;
+  left: 1rem;
   bottom: -1rem;
 }
 
@@ -201,7 +200,7 @@ body {
   }
 
   .project-container .img-part {
-    height: 50vh;
+    margin: 15vh 0 3rem 0;
     justify-content: center;
     align-items: end;
   }

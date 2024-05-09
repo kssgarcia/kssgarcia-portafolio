@@ -35,15 +35,18 @@ function Transition({ children }) {
         gsap.to(slideIn, { scaleY: 0, duration: 1, ease: "custom", delay: 2 })
         gsap.to(slideInChildren, { opacity: 1, duration: 1, ease: "custom", delay: 0.5 })
 
-        gsap.set("#cursor", { xPercent: -50, yPercent: -50 });
 
-        let xTo = gsap.quickTo("#cursor", "x", { duration: 0.6, ease: "power3" }),
-            yTo = gsap.quickTo("#cursor", "y", { duration: 0.6, ease: "power3" });
+        if (!window.matchMedia("only screen and (max-width: 1000px)").matches) {
+            gsap.set("#cursor", { xPercent: -50, yPercent: -50 });
 
-        window.addEventListener("mousemove", e => {
-            xTo(e.clientX);
-            yTo(e.clientY);
-        });
+            let xTo = gsap.quickTo("#cursor", "x", { duration: 0.6, ease: "power3" }),
+                yTo = gsap.quickTo("#cursor", "y", { duration: 0.6, ease: "power3" });
+
+            window.addEventListener("mousemove", e => {
+                xTo(e.clientX);
+                yTo(e.clientY);
+            });
+        }
     }, []);
 
     return (
@@ -56,6 +59,7 @@ function Transition({ children }) {
                 <div className="title-transition" style={{
                     position: 'fixed',
                     zIndex: 1000,
+                    textAlign: 'center',
                 }}>
                     {title}
                 </div>
@@ -73,7 +77,7 @@ function Transition({ children }) {
                 <img style={{
                 transform: 'scale3d(0, 0, 0)'
             }}
-                id="svg-cursor" src="cursor.svg" alt="Cursor" />
+                id="svg-cursor" src="/kssgarcia-portafolio/cursor.svg" alt="Cursor" />
             </div>
             {displayChildren}
         </div>
