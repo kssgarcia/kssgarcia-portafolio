@@ -180,7 +180,7 @@ body {
     height: auto;
     width: 100vw;
     border-radius: 0 0 0 0;
-    background-color: var(--cl-bc);
+    background-color: #0e100f9e;
     display: grid;
     grid-auto-flow: row;
     grid-auto-columns: 100% 100%;
