@@ -832,13 +832,23 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--cl-font);
+  background-color: var(--cl-bc-post);
   transform: scaleY(0);
   transform-origin: bottom;
 }
 
 .title-transition {
-  color: var(--cl-bc);
+  color: var(--cl-font);
   font-size: 7rem;
   font-family: var(--font-italiana);
 }
+
+@media screen and (max-width: 1000px) {
+  .title-enter {
+    font-size: 3rem;
+  }
+
+  .title-transition {
+    font-size: 5rem;
+  }
+} 
