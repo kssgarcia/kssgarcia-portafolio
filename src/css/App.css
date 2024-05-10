@@ -412,6 +412,7 @@ body {
 
   .container-projects .list-projects {
     grid-auto-columns: 100%;
+    margin: 3rem 2rem 0 2rem;
   }
 
   .container-projects .project .container-img {
