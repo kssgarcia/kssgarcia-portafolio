@@ -86,8 +86,6 @@ class HeroThree {
     this.target = new THREE.Vector2(0, 0);
     this.mouse = new THREE.Vector2(0, 0);
 
-    //Objects
-
     this.mouseEvents();
     this.Resize();
     this.Settings();
