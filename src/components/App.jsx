@@ -463,8 +463,8 @@ function App() {
                     <div className="social-contact">
                         <div className="social-title">Socials</div>
                         <div className="socials">
-                            <a href="" className="gihub">Github</a>
-                            <a href="" className="instagram">Instagram</a>
+                            <a href="https://github.com/kssgarcia" className="gihub">Github</a>
+                            <a href="https://www.instagram.com/kssgarcia7" className="instagram">Instagram</a>
                         </div>
                     </div>
                     <div className="work-contact">
