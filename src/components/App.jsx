@@ -29,7 +29,7 @@ function App() {
     useEffect(() => {
         window.scrollTo(0, location.state?.scrollY || 0);
 
-        axios.get('https://kssgarcia.github.io/OptBlog/blog/index.xml', {
+        axios.get('https://kssgarcia.github.io/BlogPersonal/blog/index.xml', {
             "Content-Type": "application/xml; charset=utf-8"
         })
         .then(response => {
