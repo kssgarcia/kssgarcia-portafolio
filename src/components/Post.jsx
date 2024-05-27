@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
+import { InlineMath, BlockMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 import '../css/Post.css';
 
 const Post = () => {
@@ -40,20 +42,51 @@ const Post = () => {
         return doc.body.innerHTML;
     };
 
+    const renderDescription = (description) => {
+        const regex = /(\$\$[^$]+\$\$|\$[^$]+\$)/g;
+        let match;
+        let lastIndex = 0;
+        const elements = [];
+
+        while ((match = regex.exec(description)) !== null) {
+            const textBefore = description.slice(lastIndex, match.index);
+            const latex = match[0];
+
+            if (textBefore) {
+                elements.push(<span key={`text-${lastIndex}`} dangerouslySetInnerHTML={{ __html: textBefore }} />);
+            }
+
+            if (latex.startsWith('$$')) {
+                const formula = latex.slice(2, -2);
+                elements.push(<BlockMath key={`block-${lastIndex}`}>{formula}</BlockMath>);
+            } else {
+                const formula = latex.slice(1, -1);
+                elements.push(<InlineMath key={`inline-${lastIndex}`}>{formula}</InlineMath>);
+            }
+
+            lastIndex = regex.lastIndex;
+        }
+
+        if (lastIndex < description.length) {
+            const textAfter = description.slice(lastIndex);
+            elements.push(<span key={`text-${lastIndex}`} dangerouslySetInnerHTML={{ __html: textAfter }} />);
+        }
+
+        return elements;
+    };
+
     const oldBaseUrl = 'https://kssgarcia.github.io/BlogPersonal/BlogPersonal/';
     const newBaseUrl = 'https://raw.githubusercontent.com/kssgarcia/BlogPersonal/main/static/';
     const updatedDescription = updateImageUrls(description, oldBaseUrl, newBaseUrl);
 
     return (
         <div id="post">
-            <div className="project-container">
-                <div className="img-part">
-                    <div className="box-image">
-                    </div>
-                    <div className="title">{title}</div>
+            <div className="post-container">
+                <div className="title">
+                    {title}
                 </div>
                 <div className="post-content">
-                    <div dangerouslySetInnerHTML={{ __html: updatedDescription }}></div>
+                    {renderDescription(updatedDescription)}
                 </div>
             </div>
             <div className="back-main" onClick={handleBack}></div>

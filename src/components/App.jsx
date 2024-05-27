@@ -23,7 +23,6 @@ function App() {
     };
 
     const handlePostClick = (post) => {
-        console.log(post)
         const scrollY = window.scrollY;
         navigate(`/kssgarcia-portafolio/post/${post.index}`, { state: { ...post, scrollY } });
     };
