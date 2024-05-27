@@ -22,6 +22,12 @@ function App() {
         navigate(`/kssgarcia-portafolio/project/${project.key}`, { state: { ...project, scrollY } });
     };
 
+    const handlePostClick = (post) => {
+        console.log(post)
+        const scrollY = window.scrollY;
+        navigate(`/kssgarcia-portafolio/post/${post.index}`, { state: { ...post, scrollY } });
+    };
+
     gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(Draggable);
@@ -44,7 +50,7 @@ function App() {
                     description: item.description[0],
                     pubDate: item.pubDate[0]
                 }));
-                setPosts(parsedPosts.slice(0, 4));
+                setPosts(parsedPosts.slice(0, 6));
             });
         })
         .catch(error => console.error('Error fetching or parsing posts:', error));
@@ -447,7 +453,7 @@ function App() {
                                 onMouseEnter={() => setHover(true)}
                                 onMouseLeave={() => setHover(false)}
                                 key={index}>
-                                <a href={post.link} target="_blank" rel="noopener noreferrer">{post.title}</a>
+                                <a target="_blank" rel="noopener noreferrer" onClick={() => handlePostClick({ ...post, index })}>{post.title}</a>
                                 <p>Published on: {post.pubDate}</p>
                             </li>
                         ))}
