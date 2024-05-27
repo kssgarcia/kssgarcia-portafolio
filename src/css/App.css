@@ -563,6 +563,7 @@ body {
   justify-self: end;
   text-align: end;
   width: 80%;
+  cursor: pointer;
 }
 
 .container-blog a .char {
