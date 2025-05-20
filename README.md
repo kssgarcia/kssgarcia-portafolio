@@ -14,6 +14,7 @@ Welcome to the repository for my personal portfolio website. This site showcases
 To set up this project locally, follow these steps:
 
 1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/kssgarcia/kssgarcia-portafolio.git
    cd kssgarcia-portafolio
@@ -35,6 +36,7 @@ To set up this project locally, follow these steps:
    ```bash
     npm run deploy
    ```
+
 ## Adding New Projects
 
 To add new projects to the portfolio, you need to update the `Projects.json` file located in `src/assets`. Here’s how you can add a new project:
@@ -46,15 +48,16 @@ To add new projects to the portfolio, you need to update the `Projects.json` fil
 
 ```json
 {
-    "id": "project-id",
-    "title": "Project Title",
-    "description": "A brief description of the project.",
-    "imageUrl": "path/to/image.jpg",
-    "techStack": ["Technology1", "Technology2", "Technology3"],
-    "githubUrl": "https://github.com/yourusername/project",
-    "liveUrl": "https://example.com/project"
+  "id": "project-id",
+  "title": "Project Title",
+  "description": "A brief description of the project.",
+  "imageUrl": "path/to/image.jpg",
+  "techStack": ["Technology1", "Technology2", "Technology3"],
+  "githubUrl": "https://github.com/yourusername/project",
+  "liveUrl": "https://example.com/project"
 }
 ```
 
 ## License
+
 This project is open source and available under the MIT License.

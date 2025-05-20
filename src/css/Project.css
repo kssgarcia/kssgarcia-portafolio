@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Italiana&family=Roboto+Condensed:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Italiana&family=Roboto+Condensed:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 :root {
-  --font-inria: 'Inria Serif', serif;
-  --font-italiana: 'italiana', serif;
-  --font-roboto: 'Roboto Condensed', sans-serif;
+  --font-inria: "Inria Serif", serif;
+  --font-italiana: "italiana", serif;
+  --font-roboto: "Roboto Condensed", sans-serif;
 
   --cl-bc-front: transparent;
   --cl-bc: #0e100f;
-  --cl-font: rgb(255,252,225);
+  --cl-font: rgb(255, 252, 225);
   --cl-bc-img: #1e1f1e;
   --cl-font-description: #7c7c6f;
   --cl-bc-post: #412f21;
 }
 
-body, html {
+body,
+html {
   scrollbar-width: none; /* For Firefox */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
   ::-webkit-scrollbar {
@@ -69,9 +70,9 @@ body {
   padding: 1em;
   -webkit-filter: sepia(60%) blur(2px);
   filter: sepia(60%) blur(2px);
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   transition-property: all;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-container img {
@@ -82,11 +83,11 @@ body {
 }
 
 @media screen and (min-width: 1000px) {
-.project-container .box-image:hover {
-  -webkit-filter: sepia(0) blur(0);
-  filter: sepia(0) blur(0);
-  scale: 103%;
-}
+  .project-container .box-image:hover {
+    -webkit-filter: sepia(0) blur(0);
+    filter: sepia(0) blur(0);
+    scale: 103%;
+  }
 }
 
 .project-container .img-part .title {
@@ -143,7 +144,9 @@ body {
   height: 4rem;
   background-color: var(--cl-font);
   border-radius: 2rem 2rem 2rem 2rem;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
   cursor: pointer;
 }
 
@@ -263,4 +266,4 @@ body {
   .title-transition {
     font-size: 5rem;
   }
-} 
+}

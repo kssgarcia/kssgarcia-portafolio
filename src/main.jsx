@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import AnimatedRoutes from './components/AnimatedRoutes.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import AnimatedRoutes from "./components/AnimatedRoutes.jsx";
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <AnimatedRoutes />
@@ -12,31 +12,31 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 );
 
-import vertexShader from './shaders/vertex.glsl';
-import fragmentShader from './shaders/fragment.glsl';
+import vertexShader from "./shaders/vertex.glsl";
+import fragmentShader from "./shaders/fragment.glsl";
 import * as THREE from "three";
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-import createInputEvents from 'simple-input-events';
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
+import createInputEvents from "simple-input-events";
 
 const DotScreenShader = {
-    uniforms: {
-        'tDiffuse': { value: null },
-        'tSize': { value: new THREE.Vector2(256, 256) },
-        'center': { value: new THREE.Vector2(0.5, 0.5) },
-        'angle': 1.57,
-        'scale': 1.0
-    },
+  uniforms: {
+    tDiffuse: { value: null },
+    tSize: { value: new THREE.Vector2(256, 256) },
+    center: { value: new THREE.Vector2(0.5, 0.5) },
+    angle: 1.57,
+    scale: 1.0,
+  },
 
-    vertexShader: `
+  vertexShader: `
     varying vec2 vUv;
     void main() {
         vUv = uv;
         gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
     }`,
 
-    fragmentShader: `
+  fragmentShader: `
     uniform vec2 center;
     uniform float angle;
     uniform float scale;
@@ -74,8 +74,8 @@ const DotScreenShader = {
 
     gl_FragColor = color;
 
-    }`
-}
+    }`,
+};
 
 class HeroThree {
   constructor() {
@@ -96,10 +96,10 @@ class HeroThree {
   }
 
   mouseEvents() {
-    this.event.on('move', ({ uv }) => {
+    this.event.on("move", ({ uv }) => {
       this.mouse.x = uv[0] - 0.5;
       this.mouse.y = uv[1] + 0.5;
-    })
+    });
   }
 
   initPost() {
@@ -107,20 +107,20 @@ class HeroThree {
     this.composer.addPass(new RenderPass(this.scene, this.camera));
 
     const effect1 = new ShaderPass(DotScreenShader);
-    effect1.uniforms['scale'].value = 4;
+    effect1.uniforms["scale"].value = 4;
     this.composer.addPass(effect1);
   }
 
   Sphere() {
     this.geometry = new THREE.SphereGeometry(5, 32, 32);
 
-    this.material = new THREE.ShaderMaterial({ 
+    this.material = new THREE.ShaderMaterial({
       uniforms: {
-        uTime: { value: 0 }
+        uTime: { value: 0 },
       },
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
-      side: THREE.DoubleSide 
+      side: THREE.DoubleSide,
     });
 
     this.sphere = new THREE.Mesh(this.geometry, this.material);
@@ -130,40 +130,43 @@ class HeroThree {
   Resize() {
     this.sizes = {
       width: window.innerWidth,
-      height: window.innerHeight
-    }
+      height: window.innerHeight,
+    };
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       // Update sizes
-      this.sizes.width = window.innerWidth
-      this.sizes.height = window.innerHeight
+      this.sizes.width = window.innerWidth;
+      this.sizes.height = window.innerHeight;
 
-      this.camera.updateProjectionMatrix()
+      this.camera.updateProjectionMatrix();
 
       // Update renderer
-      this.renderer.setSize(this.sizes.width, this.sizes.height)
-      this.composer.setSize(this.sizes.width, this.sizes.height)
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    })
+      this.renderer.setSize(this.sizes.width, this.sizes.height);
+      this.composer.setSize(this.sizes.width, this.sizes.height);
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    });
   }
 
   Settings() {
     let aspect = this.sizes.width / this.sizes.height;
     this.camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
-    this.posCamera = new THREE.Vector3(0,0,2.5);
-    this.camera.position.set(this.posCamera.x, this.posCamera.y, this.posCamera.z);
+    this.posCamera = new THREE.Vector3(0, 0, 2.5);
+    this.camera.position.set(
+      this.posCamera.x,
+      this.posCamera.y,
+      this.posCamera.z,
+    );
     this.scene.add(this.camera);
 
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       antialias: true,
       // alpha: true
-    })
+    });
     this.renderer.setClearColor(0x000000, 1); // the default
 
     this.renderer.setSize(this.sizes.width, this.sizes.height);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   }
 
   Tick() {
@@ -175,8 +178,8 @@ class HeroThree {
     this.composer.render(this.scene, this.camera);
 
     this.target.lerp(this.mouse, 0.1);
-    this.camera.position.x = this.posCamera.x-this.target.x;
-    this.camera.position.y = this.posCamera.y+this.target.y;
+    this.camera.position.x = this.posCamera.x - this.target.x;
+    this.camera.position.y = this.posCamera.y + this.target.y;
   }
 }
 new HeroThree();
